@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <command>
+    <update>
+      <xriAU:update
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:authId>!!1002</xriAU:authId>
+        <xriAU:add>
+          <xriAU:sep>
+            <xriAU:id>NEW-AUTHORITY</xriAU:id>
+            <xriAU:priority>10</xriAU:priority>
+            <xriAU:authority>
+            urn:uuid:f0502a17-4503-4463-8516-f1225b330e4d</xriAU:authority>
+            <xriAU:type match="default">xri://$res*auth*($v*2.0)</xriAU:type>
+            <xriAU:uri append="none" priority="10">http://xri.2idi.com/</xriAU:uri>
+            <xriAU:uri priority="20">https://xri.2idi.com/</xriAU:uri>
+          </xriAU:sep>
+          <xriAU:sep>
+            <xriAU:id>MAIL-SERVICE</xriAU:id>
+            <xriAU:priority>20</xriAU:priority>
+            <xriAU:authority>xri://!!1002!1234</xriAU:authority>
+            <xriAU:uri priority="30">http://2idi.mail.com/</xriAU:uri>
+            <xriAU:uri priority="10">https://2idi.mail.com/</xriAU:uri>
+            <xriAU:mediaType>message/text</xriAU:mediaType>
+          </xriAU:sep>
+          <xriAU:sep>
+            <xriAU:id>NEW-PIC-SERVICE</xriAU:id>
+            <xriAU:priority>10</xriAU:priority>
+            <xriAU:path>/pics</xriAU:path>
+            <xriAU:uri priority="30">http://2idi.pictures.com/</xriAU:uri>
+            <xriAU:uri>https://2idi.pictures.com/</xriAU:uri>
+            <xriAU:mediaType>image/gif</xriAU:mediaType>
+            <xriAU:mediaType>image/jpeg</xriAU:mediaType>
+          </xriAU:sep>
+          <xriAU:status s="clientUpdateProhibited" lang="en">
+          </xriAU:status>
+        </xriAU:add>
+        <xriAU:rem>
+          <xriAU:sep>
+            <xriAU:id>OLD-AUTHORITY</xriAU:id>
+          </xriAU:sep>
+          <xriAU:sep>
+            <xriAU:id>PIC-SERVICE</xriAU:id>
+          </xriAU:sep>
+          <xriAU:sep>
+            <xriAU:id>MAIL-SERVICE</xriAU:id>
+          </xriAU:sep>
+          <xriAU:status s="clientHold"/>
+        </xriAU:rem>
+        <xriAU:chg>
+          <xriAU:authId>!!1003</xriAU:authId>
+          <xriAU:authInfo>
+            <xriAU:pw>F00Bar2</xriAU:pw>
+          </xriAU:authInfo>
+        </xriAU:chg>
+        <xriAU:authInfo>
+          <xriAU:pw>2fooBAR</xriAU:pw>
+        </xriAU:authInfo>
+      </xriAU:update>
+    </update>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

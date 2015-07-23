@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <command>
+    <create>
+      <xriINA:create
+       xmlns:xriINA="urn:ietf:params:xml:ns:xriINA-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriINA-1.0
+       xriINA-1.0.xsd">
+        <xriINA:iname>@Foo.Bar</xriINA:iname>
+        <xriINA:authority>
+          <xriINA:authId>AUTHORITY</xriINA:authId>
+          <xriINA:authInfo>
+            <xriINA:pw>2fooBAR</xriINA:pw>
+          </xriINA:authInfo>
+        </xriINA:authority>
+        <xriINA:period unit="y">2</xriINA:period>
+      </xriINA:create>
+    </create>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

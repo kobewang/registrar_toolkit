@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+  <response>
+    <result code="1000">
+      <msg>Command completed successfully</msg>
+    </result>
+    <resData>
+      <xriINA:infData
+       xmlns:xriINA="urn:ietf:params:xml:ns:xriINA-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriINA-1.0
+       xriINA-1.0.xsd">
+        <xriINA:iname>@Foo.Bar</xriINA:iname>
+        <xriINA:roid>INA_1002-NEUSTAR</xriINA:roid>
+        <xriINA:status s="clientDeleteProhibited"/>
+        <xriINA:status s="clientUpdateProhibited"/>
+        <xriINA:authId>AUTHORITY</xriINA:authId>
+        <xriINA:clID>ClientY</xriINA:clID>
+        <xriINA:crID>ClientX</xriINA:crID>
+        <xriINA:crDate>2005-05-03T22:00:00.0Z</xriINA:crDate>
+        <xriINA:upID>ClientX</xriINA:upID>
+        <xriINA:upDate>2005-05-05T09:00:00.0Z</xriINA:upDate>
+        <xriINA:exDate>2006-05-03T22:00:00.0Z</xriINA:exDate>
+        <xriINA:trDate>2005-05-04T09:00:00.0Z</xriINA:trDate>
+      </xriINA:infData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12346</clTRID>
+      <svTRID>54321-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

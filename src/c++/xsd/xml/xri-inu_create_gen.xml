@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <command>
+    <create>
+      <xriINU:create
+       xmlns:xriINU="urn:ietf:params:xml:ns:xriINU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriINU-1.0
+       xriINU-1.0.xsd">
+        <xriINU:refId>CLIENT-X-REF-ID-12345</xriINU:refId>
+        <xriINU:authority>
+          <xriINU:authId>AUTHORITY</xriINU:authId>
+          <xriINU:authInfo>
+            <xriINU:pw>2fooBAR</xriINU:pw>
+          </xriINU:authInfo>
+        </xriINU:authority>
+        <xriINU:priority>20</xriINU:priority>
+        <xriINU:period unit="y">2</xriINU:period>
+      </xriINU:create>
+    </create>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

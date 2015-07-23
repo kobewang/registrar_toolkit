@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <command>
+    <update>
+      <domain:update
+       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
+       domain-1.0.xsd">
+        <domain:name>example.com</domain:name>
+      </domain:update>
+    </update>
+    <extension>
+      <secDNS:update
+       xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:secDNS-1.0
+       secDNS-1.0.xsd">
+        <secDNS:chg>
+          <secDNS:dsData>
+            <secDNS:keyTag>12345</secDNS:keyTag>
+            <secDNS:alg>3</secDNS:alg>
+            <secDNS:digestType>1</secDNS:digestType>
+            <secDNS:digest>49FD46E6C4B45C55D4AC</secDNS:digest>
+            <secDNS:sDate>2004-09-21T09:00:00.0Z</secDNS:sDate>
+            <secDNS:eDate>2004-10-19T09:00:00.0Z</secDNS:eDate>
+            <secDNS:vInterval>P14D</secDNS:vInterval>
+          </secDNS:dsData>
+        </secDNS:chg>
+      </secDNS:update>
+    </extension>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

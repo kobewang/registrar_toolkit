@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <response>
+    <result code="1000">
+      <msg>Command completed successfully</msg>
+    </result>
+    <resData>
+      <xriISV:creData
+       xmlns:xriISV="urn:ietf:params:xml:ns:xriISV-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriISV-1.0
+       xriISV-1.0.xsd">
+        <xriISV:id>SINGLE-SIGN-ON-SERVICE-1</xriISV:id>
+        <xriISV:type>xri://$resolution*local/(+isso)*($v/1.0)</xriISV:type>
+        <xriISV:uri>https://isso.2idi.com/=foo.bar</xriISV:uri>
+        <xriISV:uri>http://isso.2idi.com/=foo.bar</xriISV:uri>
+        <xriISV:crDate>2005-05-02T22:00:00.0Z</xriISV:crDate>
+        <xriISV:exDate>2007-05-02T22:00:00.0Z</xriISV:exDate>
+      </xriISV:creData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12345</clTRID>
+      <svTRID>54321-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

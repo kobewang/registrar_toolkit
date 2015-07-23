@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <command>
+    <create>
+      <xriAU:create
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:authId>FOO-BAR-ID</xriAU:authId>
+        <xriAU:escrowAgent>
+          <xriAU:authId>@</xriAU:authId>
+        </xriAU:escrowAgent>
+        <xriAU:contactAgent>
+          <xriAU:authId>@!(!!1234!5678)</xriAU:authId>
+        </xriAU:contactAgent>
+        <xriAU:socialData>
+          <xriAU:postalInfo>
+            <xriAU:name>John Doe</xriAU:name>
+            <xriAU:org>Foo Bar, Inc.</xriAU:org>
+            <xriAU:addr>
+              <xriAU:street>123 Example Dr.</xriAU:street>
+              <xriAU:street>Suite 100</xriAU:street>
+              <xriAU:city>Dulles</xriAU:city>
+              <xriAU:sp>VA</xriAU:sp>
+              <xriAU:pc>20166-6503</xriAU:pc>
+              <xriAU:cc>US</xriAU:cc>
+            </xriAU:addr>
+          </xriAU:postalInfo>
+          <xriAU:voice x="1234">+1.7035555555</xriAU:voice>
+          <xriAU:voice x="1235">+1.7035555555</xriAU:voice>
+          <xriAU:fax>+1.7035555556</xriAU:fax>
+          <xriAU:pager x="1234">+1.7035555557</xriAU:pager>
+          <xriAU:email>jdoe@example.biz</xriAU:email>
+          <xriAU:email>jdoe@example.com</xriAU:email>
+        </xriAU:socialData>
+        <xriAU:authInfo>
+          <xriAU:pw>2fooBAR</xriAU:pw>
+        </xriAU:authInfo>
+      </xriAU:create>
+    </create>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

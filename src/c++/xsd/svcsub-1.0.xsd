@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:svcsub-1.0"
+        xmlns:svcsub="urn:ietf:params:xml:ns:svcsub-1.0"
+        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+<!--
+Import common element types.
+-->
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+          schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:epp-1.0"
+          schemaLocation="epp-1.0.xsd"/>
+
+  <annotation>
+    <documentation>
+      Extensible Provisioning Protocol v1.0
+      service subscription provisioning schema.
+    </documentation>
+  </annotation>
+
+<!--
+Child elements found in EPP commands.
+-->
+  <element name="check" type="svcsub:mNameType"/>
+  <element name="create" type="svcsub:createType"/>
+  <element name="delete" type="svcsub:sNameType"/>
+  <element name="info" type="svcsub:sNameType"/>
+  <element name="renew" type="svcsub:renewType"/>
+  <element name="transfer" type="svcsub:transferType"/>
+  <element name="update" type="svcsub:updateType"/>
+
+<!--
+Child elements of the <create> command.
+-->
+  <complexType name="createType">
+    <sequence>
+      <element name="id" type="svcsub:subIDType"/>
+      <element name="service" type="svcsub:svcIDType"/>
+      <element name="param" type="svcsub:svcParamType"
+       minOccurs="0" maxOccurs="unbounded"/>
+      <element name="period" type="svcsub:periodType"
+       minOccurs="0"/>
+      <element name="registrant" type="eppcom:clIDType"
+       minOccurs="0"/>
+      <element name="contact" type="svcsub:contactType"
+       minOccurs="0" maxOccurs="unbounded"/>
+      <element name="authInfo" type="svcsub:authInfoType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="periodType">
+    <simpleContent>
+      <extension base="svcsub:pLimitType">
+        <attribute name="unit" type="svcsub:pUnitType"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <simpleType name="pLimitType">
+    <restriction base="unsignedShort">
+      <minInclusive value="1"/>
+      <maxInclusive value="99"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="pUnitType">
+    <restriction base="token">
+      <enumeration value="y"/>
+      <enumeration value="m"/>
+    </restriction>
+  </simpleType>
+
+  <complexType name="contactType">
+    <simpleContent>
+      <extension base="eppcom:clIDType">
+        <attribute name="type" type="svcsub:contactAttrType"
+         use="optional"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <simpleType name="contactAttrType">
+    <restriction base="token">
+      <enumeration value="admin"/>
+      <enumeration value="billing"/>
+      <enumeration value="tech"/>
+      <enumeration value="primary"/>
+      <enumeration value="secondary"/>
+      <enumeration value="bizlock"/>
+      <!--minLength value="3"/>
+      <maxLength value="64"/-->
+    </restriction>
+  </simpleType>
+
+  <complexType name="authInfoType">
+    <choice>
+      <element name="pw" type="eppcom:pwAuthInfoType"/>
+      <element name="ext" type="eppcom:extAuthInfoType"/>
+    </choice>
+  </complexType>
+
+  <simpleType name="subIDType">
+    <restriction base="token">
+      <minLength value="3"/>
+      <maxLength value="64"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="svcIDType">
+    <restriction base="token">
+      <minLength value="3"/>
+      <maxLength value="64"/>
+    </restriction>
+  </simpleType>
+
+  <complexType name="svcParamType">
+    <simpleContent>
+      <extension base="token">
+        <attribute name="name" type="svcsub:svcParamAttrType"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <simpleType name="svcParamAttrType">
+    <restriction base="token">
+    </restriction>
+  </simpleType>
+
+  <simpleType name="userIDType">
+    <restriction base="token">
+      <minLength value="3"/>
+      <maxLength value="64"/>
+    </restriction>
+  </simpleType>
+
+<!--
+Child element of commands that require a single name.
+-->
+  <complexType name="sNameType">
+    <sequence>
+      <element name="id" type="svcsub:subIDType"/>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <element name="userid" type="svcsub:userIDType"
+       minOccurs="0"/>
+      <element name="authInfo" type="svcsub:authInfoType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child element of commands that accept multiple names.
+-->
+  <complexType name="mNameType">
+    <sequence>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <element name="id" type="svcsub:subIDType"
+       maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <renew> command.
+-->
+  <complexType name="renewType">
+    <sequence>
+      <element name="id" type="svcsub:subIDType"/>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <element name="curExpDate" type="date"/>
+      <element name="period" type="svcsub:periodType"
+       minOccurs="0"/>
+      <element name="userid" type="svcsub:userIDType"
+       minOccurs="0"/>
+      <element name="authInfo" type="svcsub:authInfoType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <transfer> command.
+-->
+  <complexType name="transferType">
+    <sequence>
+      <element name="id" type="svcsub:subIDType"/>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <element name="period" type="svcsub:periodType"
+       minOccurs="0"/>
+      <element name="userid" type="svcsub:userIDType"
+       minOccurs="0"/>
+      <element name="authInfo" type="svcsub:authInfoType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <update> command.
+-->
+  <complexType name="updateType">
+    <sequence>
+      <element name="id" type="svcsub:subIDType"/>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <choice minOccurs="1" maxOccurs="3">
+        <element name="add" type="svcsub:addRemType"
+         minOccurs="0"/>
+        <element name="rem" type="svcsub:addRemType"
+         minOccurs="0"/>
+        <element name="chg" type="svcsub:chgType"
+         minOccurs="0"/>
+       </choice>
+      <element name="userid" type="svcsub:userIDType"
+       minOccurs="0"/>
+      <element name="authInfo" type="svcsub:authInfoType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Data elements that can be added or removed.
+-->
+  <complexType name="addRemType">
+    <choice minOccurs="1" maxOccurs="3">
+      <element name="param" type="svcsub:svcParamType"
+       minOccurs="0" maxOccurs="unbounded"/>
+      <element name="contact" type="svcsub:contactType"
+       minOccurs="0" maxOccurs="unbounded"/>
+      <element name="status" type="svcsub:statusType"
+       minOccurs="0" maxOccurs="14"/>
+    </choice>
+  </complexType>
+
+<!--
+Data elements that can be changed.
+-->
+  <complexType name="chgType">
+    <sequence>
+      <element name="registrant" type="eppcom:clIDType"
+       minOccurs="0"/>
+      <element name="authInfo" type="svcsub:authInfoType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child response elements.
+-->
+  <element name="chkData" type="svcsub:chkDataType"/>
+  <element name="creData" type="svcsub:creDataType"/>
+  <element name="infData" type="svcsub:infDataType"/>
+  <element name="panData" type="svcsub:panDataType"/>
+  <element name="renData" type="svcsub:renDataType"/>
+  <element name="trnData" type="svcsub:trnDataType"/>
+
+<!--
+<check> response elements.
+-->
+  <complexType name="chkDataType">
+    <sequence>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <element name="cd" type="svcsub:checkType"
+       maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="checkType">
+    <sequence>
+      <element name="id" type="svcsub:checkIDType"/>
+      <element name="reason" type="eppcom:reasonType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="checkIDType">
+    <simpleContent>
+      <extension base="eppcom:clIDType">
+        <attribute name="avail" type="boolean"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+<!--
+<create> and <renew> response elements.
+-->
+  <complexType name="creDataType">
+    <sequence>
+      <element name="id" type="svcsub:subIDType"/>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <element name="crDate" type="dateTime"/>
+      <element name="exDate" type="dateTime"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+<info> response elements.
+-->
+  <complexType name="infDataType">
+    <sequence>
+      <element name="id" type="svcsub:subIDType"/>
+      <element name="roid" type="eppcom:roidType"/>
+      <element name="status" type="svcsub:statusType"
+       maxOccurs="14"/>
+      <element name="registrant" type="svcsub:contactType"
+       minOccurs="0"/>
+      <element name="contact" type="svcsub:contactType"
+       minOccurs="0" maxOccurs="unbounded"/>
+      <element name="service" type="svcsub:svcIDType"/>
+      <element name="param" type="svcsub:svcParamType"
+       minOccurs="0" maxOccurs="unbounded"/>
+      <element name="clID" type="eppcom:clIDType"/>
+      <element name="crID" type="eppcom:clIDType"/>
+      <element name="crDate" type="dateTime"/>
+      <element name="upID" type="eppcom:clIDType"
+       minOccurs="0"/>
+      <element name="upDate" type="dateTime"
+       minOccurs="0"/>
+      <element name="exDate" type="dateTime"
+       minOccurs="0"/>
+      <element name="trDate" type="dateTime"
+       minOccurs="0"/>
+      <element name="authInfo" type="svcsub:authInfoType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Status is a combination of attributes and an optional human-readable
+message that may be expressed in languages other than English.
+-->
+  <complexType name="statusType">
+    <simpleContent>
+      <extension base="normalizedString">
+        <attribute name="s" type="svcsub:statusValueType"
+         use="required"/>
+        <attribute name="lang" type="language"
+         use="optional" default="en"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <simpleType name="statusValueType">
+    <restriction base="token">
+      <enumeration value="clientDeleteProhibited"/>
+      <enumeration value="clientSuspended"/>
+      <enumeration value="clientRenewProhibited"/>
+      <enumeration value="clientTransferProhibited"/>
+      <enumeration value="clientUpdateProhibited"/>
+      <enumeration value="inactive"/>
+      <enumeration value="ok"/>
+      <enumeration value="pendingDelete"/>
+      <enumeration value="pendingTransfer"/>
+      <enumeration value="pendingVerification"/>
+      <enumeration value="serverDeleteProhibited"/>
+      <enumeration value="serverSuspended"/>
+      <enumeration value="serverRenewProhibited"/>
+      <enumeration value="serverTransferProhibited"/>
+      <enumeration value="serverUpdateProhibited"/>
+    </restriction>
+  </simpleType>
+
+<!--
+Pending action notification response elements.
+-->
+  <complexType name="panDataType">
+    <sequence>
+      <element name="id" type="svcsub:paSubIDType"/>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <element name="paTRID" type="epp:trIDType"/>
+      <element name="paDate" type="dateTime"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="paSubIDType">
+    <simpleContent>
+      <extension base="svcsub:subIDType">
+        <attribute name="paResult" type="boolean"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+<!--
+<renew> response elements.
+-->
+  <complexType name="renDataType">
+    <sequence>
+      <element name="id" type="svcsub:subIDType"/>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <element name="exDate" type="dateTime"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+<transfer> response elements.
+-->
+  <complexType name="trnDataType">
+    <sequence>
+      <element name="id" type="svcsub:subIDType"/>
+      <element name="service" type="svcsub:svcIDType"
+       minOccurs="0"/>
+      <element name="trStatus" type="eppcom:trStatusType"/>
+      <element name="reID" type="eppcom:clIDType"/>
+      <element name="reDate" type="dateTime"/>
+      <element name="acID" type="eppcom:clIDType"/>
+      <element name="acDate" type="dateTime"/>
+      <element name="exDate" type="dateTime"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+End of schema.
+-->
+</schema>

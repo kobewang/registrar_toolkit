@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:neustar-1.0"
+        xmlns:neustar="urn:ietf:params:xml:ns:neustar-1.0"
+        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+<!--
+Import common element types.
+-->
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+          schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:epp-1.0"
+          schemaLocation="epp-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:host-1.0"
+          schemaLocation="host-1.0.xsd"/>
+
+  <annotation>
+    <documentation>
+      Extensible Provisioning Protocol v1.0
+      NeuStar-specific schema.
+    </documentation>
+  </annotation>
+
+  <element name="trnData" type="neustar:trnDataType"/>
+
+<!--
+poll response elements for transactions.
+-->
+  <complexType name="trnDataType">
+    <sequence>
+      <element name="objId" type="eppcom:labelType"/>
+      <element name="objType" type="neustar:objTypeType"/>
+      <element name="operation" type="neustar:operationType"/>
+      <element name="trnDate" type="dateTime"/>
+    </sequence>
+  </complexType>
+
+
+  <simpleType name="objTypeType">
+    <restriction base="token">
+      <enumeration value="domain"/>
+      <enumeration value="contact"/>
+      <enumeration value="nameserver"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="operationType">
+    <restriction base="token">
+      <enumeration value="add"/>
+      <enumeration value="delete"/>
+      <enumeration value="update"/>
+      <enumeration value="renew"/>
+      <enumeration value="transfer"/>
+    </restriction>
+  </simpleType>
+
+<!--
+End of schema.
+-->
+</schema>

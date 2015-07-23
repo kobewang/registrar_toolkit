@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="urn:ietf:params:xml:ns:xriINU-1.0"
+        xmlns:xriINU="urn:ietf:params:xml:ns:xriINU-1.0"
+        xmlns:xriCommon="urn:ietf:params:xml:ns:xriCommon-1.0"
+        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+<!--
+Import common element types.
+-->
+  <import namespace="urn:ietf:params:xml:ns:epp-1.0"
+          schemaLocation="epp-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+          schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:xriCommon-1.0"
+          schemaLocation="xriCommon-1.0.xsd"/>
+
+  <annotation>
+    <documentation>
+      Extensible Provisioning Protocol v1.0
+      XML schema for XRI I-Number provisioning.
+    </documentation>
+  </annotation>
+
+<!--
+Child elements found in EPP commands.
+-->
+  <element name="check"  type="xriINU:mIdType"/>
+  <element name="create" type="xriINU:createType"/>
+  <element name="delete" type="xriINU:sIdType"/>
+  <element name="info"   type="xriINU:infoType"/>
+  <element name="renew"  type="xriINU:renewType"/>
+  <element name="update" type="xriINU:updateType"/>
+
+<!--
+Child element of commands that require a single i-number
+-->
+  <complexType name="sIdType">
+    <sequence>
+      <element name="inumber"  type="xriCommon:inumberType"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child element of commands that accept multiple i-numbers
+-->
+  <complexType name="mIdType">
+    <sequence>
+      <element name="inumber" type="xriCommon:inumberType"
+       maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <create> command.
+-->
+  <complexType name="createType">
+    <sequence>
+      <choice>
+        <element name="inumber" type="xriCommon:inumberType"/>
+        <element name="refId"   type="xriINU:refIdType"/>
+	<sequence>
+          <element name="inumber" type="xriCommon:inumberType"/>
+          <element name="refId"   type="xriINU:refIdType"/>
+	</sequence>
+      </choice>
+      <element name="authority" type="xriINU:authorityType"/>
+      <element name="period"    type="xriINU:periodType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="authorityType">
+    <sequence>
+      <element name="authId"   type="xriCommon:authIdType"/>
+      <element name="authInfo" type="xriINU:authInfoType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <simpleType name="refIdType">
+    <restriction base="token">
+      <minLength value="1"/>
+      <maxLength value="255"/>
+    </restriction>
+  </simpleType>
+
+<!--
+Child elements of the <info> command.
+-->
+  <complexType name="infoType">
+    <sequence>
+      <element name="inumber"  type="xriCommon:inumberType"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <renew> command.
+-->
+  <complexType name="renewType">
+    <sequence>
+      <element name="inumber"    type="xriCommon:inumberType"/>
+      <element name="curExpDate" type="date"/>
+      <element name="period"     type="xriINU:periodType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <update> command.
+-->
+  <complexType name="updateType">
+    <sequence>
+      <element name="inumber"  type="xriCommon:inumberType"/>
+      <element name="add"      type="xriINU:addRemType" minOccurs="0"/>
+      <element name="rem"      type="xriINU:addRemType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Data elements that can be added or removed.
+-->
+  <complexType name="addRemType">
+    <sequence>
+      <element name="status" type="xriINU:statusType" maxOccurs="8"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child response elements.
+-->
+  <element name="chkData" type="xriINU:chkDataType"/>
+  <element name="creData" type="xriINU:creDataType"/>
+  <element name="infData" type="xriINU:infDataType"/>
+  <element name="panData" type="xriINU:panDataType"/>
+  <element name="renData" type="xriINU:renDataType"/>
+
+<!--
+<check> response elements.
+-->
+  <complexType name="chkDataType">
+    <sequence>
+      <element name="cd" type="xriINU:checkType"
+       maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="checkType">
+    <sequence>
+      <element name="inumber" type="xriINU:checkIdType"/>
+      <element name="reason"  type="eppcom:reasonType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="checkIdType">
+    <simpleContent>
+      <extension base="xriCommon:inumberType">
+        <attribute name="avail" type="boolean"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+<!--
+<create> response elements.
+-->
+  <complexType name="creDataType">
+    <sequence>
+      <element name="inumber" type="xriCommon:inumberType"/>
+      <element name="refId"   type="xriINU:refIdType" minOccurs="0"/>
+      <element name="crDate"  type="dateTime"/>
+      <element name="exDate"  type="dateTime"/>
+    </sequence>
+  </complexType>
+
+<!--
+<info> response elements.
+-->
+  <complexType name="infDataType">
+    <sequence>
+      <element name="inumber"  type="xriCommon:inumberType"/>
+      <element name="roid"     type="eppcom:roidType"/>
+      <element name="status"   type="xriINU:statusType" maxOccurs="10"/>
+      <element name="refId"    type="xriINU:refIdType"  minOccurs="0"/>
+      <element name="authId"   type="xriCommon:authIdType"/>
+      <element name="priority" type="unsignedShort" minOccurs="0" />
+      <element name="clID"     type="eppcom:clIDType"/>
+      <element name="crID"     type="eppcom:clIDType"/>
+      <element name="crDate"   type="dateTime"/>
+      <element name="upID"     type="eppcom:clIDType" minOccurs="0"/>
+      <element name="upDate"   type="dateTime" minOccurs="0"/>
+      <element name="exDate"   type="dateTime"/>
+      <element name="trDate"   type="dateTime" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+<renew> response elements.
+-->
+  <complexType name="renDataType">
+    <sequence>
+      <element name="inumber" type="xriCommon:inumberType"/>
+      <element name="exDate" type="dateTime"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Status is a combination of attributes and an optional
+human-readable message that may be expressed in languages other
+than English.
+-->
+  <complexType name="statusType">
+    <simpleContent>
+      <extension base="normalizedString">
+        <attribute name="s" type="xriINU:statusValueType"
+         use="required"/>
+        <attribute name="lang" type="language"
+         default="en"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <simpleType name="statusValueType">
+    <restriction base="token">
+      <enumeration value="clientDeleteProhibited"/>
+      <enumeration value="clientHold"/>
+      <enumeration value="clientRenewProhibited"/>
+      <enumeration value="clientUpdateProhibited"/>
+      <enumeration value="ok"/>
+      <enumeration value="pendingCreate"/>
+      <enumeration value="pendingDelete"/>
+      <enumeration value="pendingUpdate"/>
+      <enumeration value="pendingTransfer"/>
+      <enumeration value="serverDeleteProhibited"/>
+      <enumeration value="serverHold"/>
+      <enumeration value="serverRenewProhibited"/>
+      <enumeration value="serverUpdateProhibited"/>
+      <enumeration value="terminated"/>
+    </restriction>
+  </simpleType>
+
+<!--
+Pending action notification response elements.
+-->
+  <complexType name="panDataType">
+    <sequence>
+      <element name="inumber" type="xriINU:paIdType"/>
+      <element name="paTRID"  type="epp:trIDType"/>
+      <element name="paDate"  type="dateTime"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="paIdType">
+    <simpleContent>
+      <extension base="xriCommon:inumberType">
+        <attribute name="paResult" type="boolean"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+<!--
+Auth Info type.
+-->
+  <complexType name="authInfoType">
+    <choice>
+      <element name="pw"  type="eppcom:pwAuthInfoType"/>
+      <element name="ext" type="eppcom:extAuthInfoType"/>
+    </choice>
+  </complexType>
+
+<!--
+Period type.
+-->
+  <complexType name="periodType">
+    <simpleContent>
+      <extension base="xriCommon:pLimitType">
+        <attribute name="unit" type="xriCommon:pUnitType"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+<!--
+End of schema.
+-->
+</schema>

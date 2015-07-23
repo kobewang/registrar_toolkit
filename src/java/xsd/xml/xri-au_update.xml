@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <command>
+    <update>
+      <xriAU:update
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:authId>FOO-BAR-ID</xriAU:authId>
+        <xriAU:add>
+          <xriAU:trustee>
+            <xriAU:authId>FOO-BAR-CORP</xriAU:authId>
+          </xriAU:trustee>
+          <xriAU:trustee external="1">
+            <xriAU:inumber>@!2005.2222.3333.4444</xriAU:inumber>
+          </xriAU:trustee>
+          <xriAU:ref priority="5">!!1002</xriAU:ref>
+          <xriAU:ref>!!1005!(=!1111.2222.3333.4444)</xriAU:ref>
+          <xriAU:status s="clientUpdateProhibited" lang="en">
+          </xriAU:status>
+        </xriAU:add>
+        <xriAU:rem>
+          <xriAU:trustee external="0">
+            <xriAU:inumber>=!1005.2222.3333.4444</xriAU:inumber>
+          </xriAU:trustee>
+          <xriAU:trustee external="1">
+            <xriAU:authId>@FOO-BAR-INC</xriAU:authId>
+          </xriAU:trustee>
+          <xriAU:ref>!!1003!1004</xriAU:ref>
+          <xriAU:status s="clientHold"/>
+          <xriAU:status s="clientTransferProhibited"/>
+        </xriAU:rem>
+        <xriAU:chg>
+          <xriAU:authId>FOO.BAR.ID</xriAU:authId>
+          <xriAU:socialData>
+            <xriAU:postalInfo>
+              <xriAU:org>Foo Bar, Corp.</xriAU:org>
+              <xriAU:addr>
+                <xriAU:street>234 Example Dr.</xriAU:street>
+                <xriAU:street>Suite 200</xriAU:street>
+                <xriAU:city>Dulles</xriAU:city>
+                <xriAU:sp>VA</xriAU:sp>
+                <xriAU:pc>20166-6503</xriAU:pc>
+                <xriAU:cc>US</xriAU:cc>
+              </xriAU:addr>
+            </xriAU:postalInfo>
+            <xriAU:voice/>
+            <xriAU:fax>+1.7035555558</xriAU:fax>
+            <xriAU:pager/>
+            <xriAU:email/>
+          </xriAU:socialData>
+          <xriAU:authInfo>
+            <xriAU:pw>F00Bar2</xriAU:pw>
+          </xriAU:authInfo>
+        </xriAU:chg>
+        <xriAU:authInfo>
+          <xriAU:pw>2fooBAR</xriAU:pw>
+        </xriAU:authInfo>
+      </xriAU:update>
+    </update>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <response>
+    <result code="1001">
+      <msg>Command completed successfully; action pending</msg>
+    </result>
+    <resData>
+      <xriINA:trnData
+       xmlns:xriINA="urn:ietf:params:xml:ns:xriINA-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriINA-1.0
+       xriINA-1.0.xsd">
+        <xriINA:iname>*Foo.Bar</xriINA:iname>
+        <xriINA:source>OLD-AUTHORITY</xriINA:source>
+        <xriINA:target>NEW-AUTHORITY</xriINA:target>
+        <xriINA:trToken>OneTimePass</xriINA:trToken>
+        <xriINA:trStatus>pending</xriINA:trStatus>
+        <xriINA:reID>ClientX</xriINA:reID>
+        <xriINA:reDate>2005-05-06T22:00:00.0Z</xriINA:reDate>
+        <xriINA:acID>ClientY</xriINA:acID>
+        <xriINA:acDate>2005-05-11T22:00:00.0Z</xriINA:acDate>
+        <xriINA:exDate>2009-05-03T22:00:00.0Z</xriINA:exDate>
+      </xriINA:trnData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12345</clTRID>
+      <svTRID>54322-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

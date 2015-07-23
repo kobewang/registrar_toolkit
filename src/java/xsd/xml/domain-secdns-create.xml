@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <command>
+    <create>
+      <domain:create
+       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
+       domain-1.0.xsd">
+        <domain:name>example.com</domain:name>
+        <domain:period unit="y">2</domain:period>
+        <domain:ns>
+          <domain:hostObj>ns1.example.com</domain:hostObj>
+          <domain:hostObj>ns2.example.com</domain:hostObj>
+        </domain:ns>
+        <domain:registrant>jd1234</domain:registrant>
+        <domain:contact type="admin">sh8013</domain:contact>
+        <domain:contact type="tech">sh8013</domain:contact>
+        <domain:authInfo>
+          <domain:pw>2fooBAR</domain:pw>
+        </domain:authInfo>
+      </domain:create>
+    </create>
+    <extension>
+      <secDNS:create
+       xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:secDNS-1.0
+       secDNS-1.0.xsd">
+        <secDNS:dsData>
+          <secDNS:keyTag>12345</secDNS:keyTag>
+          <secDNS:alg>3</secDNS:alg>
+          <secDNS:digestType>1</secDNS:digestType>
+          <secDNS:digest>49FD46E6C4B45C55D4AC</secDNS:digest>
+          <secDNS:sDate>2004-09-14T09:00:00.0Z</secDNS:sDate>
+          <secDNS:eDate>2004-10-12T09:00:00.0Z</secDNS:eDate>
+          <secDNS:vInterval>P7D</secDNS:vInterval>
+        </secDNS:dsData>
+      </secDNS:create>
+    </extension>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

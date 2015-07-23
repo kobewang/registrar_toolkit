@@ -1,0 +1,133 @@
+#******************************************************************************
+# The MIT License (MIT)
+#  
+# Copyright (c) 2015 Neustar Inc.
+#  
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#  
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#  
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#******************************************************************************
+#
+# $Id: Makefile.incl,v 1.12 2010/06/11 21:05:30 achowdhu Exp $
+#
+# This is the Makefile template for building EPP Java Implementation
+#
+
+# Decide if we're on unix or DOS
+ifneq ($(findstring WIN,$(shell uname)),)
+# DOS
+CLPATHSEP := ;
+else 
+# UNIX
+CLPATHSEP := :
+endif
+#
+# Define the environment commands and/or utilities
+#
+EPP_CLASSPATH = $(TOP)/src
+CLPATH = $(EPP_CLASSPATH)$(CLPATHSEP)$(CLASSPATH)
+#
+JAR = jar
+JAVAOPT = -g
+JAVAC = javac $(JAVAOPT)
+JAVADOC = javadoc
+#
+MKDIR = mkdir -p 
+RM = -rm -f
+CP = cp
+MV = mv
+#
+# Define the version strings
+#
+PRODUCTVERSION = 0_4_15
+PRODUCTVERSION_DOT = 0.4.15
+PRODUCTNAME = Epp
+#
+# Define the jar file names
+#
+JARFILE = epp.jar
+#
+# Define the package value	
+#
+PACKAGES = \
+	com.neulevel.epp.core \
+	com.neulevel.epp.core.command \
+	com.neulevel.epp.core.response \
+	com.neulevel.epp.ext \
+	com.neulevel.epp.ext.command \
+	com.neulevel.epp.ext.response \
+        com.neulevel.epp.ext.fee \
+        com.neulevel.epp.ext.fee.command \
+        com.neulevel.epp.ext.fee.response \
+	com.neulevel.epp.transport \
+	com.neulevel.epp.transport.tcp \
+	com.neulevel.epp.xri \
+	com.neulevel.epp.xri.command \
+	com.neulevel.epp.xri.response \
+	com.neulevel.biz \
+	com.neulevel.us
+
+#	com.neulevel.epp.transport.beep \
+#	com.neulevel.epp.client \
+#	com.neulevel.epp.server \
+#	com.neulevel.epp.util
+#
+BINZIPFILE = ${PRODUCTNAME}-bin.${PRODUCTVERSION_DOT}.zip
+SRCZIPFILE = ${PRODUCTNAME}-src.${PRODUCTVERSION_DOT}.zip
+DOCZIPFILE = ${PRODUCTNAME}-doc.${PRODUCTVERSION_DOT}.zip
+#
+BINTARFILE = ${PRODUCTNAME}-bin.${PRODUCTVERSION_DOT}.tar
+SRCTARFILE = ${PRODUCTNAME}-src.${PRODUCTVERSION_DOT}.tar
+DOCTARFILE = ${PRODUCTNAME}-doc.${PRODUCTVERSION_DOT}.tar
+#
+BINJARFILE = ${PRODUCTNAME}-bin.${PRODUCTVERSION_DOT}.jar
+SRCJARFILE = ${PRODUCTNAME}-src.${PRODUCTVERSION_DOT}.jar
+DOCJARFILE = ${PRODUCTNAME}-doc.${PRODUCTVERSION_DOT}.jar
+#
+# Common rules
+#
+.SUFFIXES: .class .java
+#
+.java.class:
+	${JAVAC} -classpath "$(CLPATH)" $<
+	@if [ "$(TOP)" != ".." ]; \
+	then \
+		touch ${TOP}/src/classfiles_updated ; \
+	fi;
+
+all:: dirs compile 
+
+compile:: ${TARGETS}
+
+clean:: cleandirs
+	@$(RM) *.class
+
+dirs::
+	@if [ -n "$(DIRS)" ]; \
+	then for i in $(DIRS) __bogus__; do \
+	       if [ $$i != __bogus__ ] ; then \
+		echo "$(MAKE) -C $$i"; $(MAKE) -C $$i || exit 1; \
+		fi \
+	     done; \
+	fi
+
+cleandirs::
+	@if [ -n "$(DIRS)" ]; \
+	then for i in $(DIRS);do \
+		echo "$(MAKE) -C $$i clean"; $(MAKE) -C $$i clean; \
+	     done; \
+	fi

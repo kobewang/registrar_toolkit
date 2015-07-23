@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+  <command>
+    <check>
+      <xriAU:check
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:authId>FOO-BAR-ID</xriAU:authId>
+        <xriAU:authId>JOHN-DOE-ID</xriAU:authId>
+        <xriAU:authId>ANYONE-ANYWHERE-ID</xriAU:authId>
+        <xriAU:authId>!!1234</xriAU:authId>
+        <xriAU:authId>=!1001.2222.3333.4444</xriAU:authId>
+        <xriAU:authId>@!1011.2222.3333.4444</xriAU:authId>
+      </xriAU:check>
+    </check>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <response>
+    <result code="1000">
+      <msg>Command completed successfully</msg>
+    </result>
+    <resData>
+      <xriAU:creData
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:authId>FOO-BAR-ID</xriAU:authId>
+        <xriAU:crDate>2005-05-02T22:00:00.0Z</xriAU:crDate>
+      </xriAU:creData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12345</clTRID>
+      <svTRID>54321-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

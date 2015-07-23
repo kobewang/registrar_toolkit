@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="javartk" default="build" basedir=".">
+	<!-- Set global properties for this build -->
+	<property name="build.test" value="./test"/>
+	<property name="build.dist" value="./dist"/>
+	<property name="build.conf" value="./conf"/>
+	<property name="build.dist.classes" value="${build.dist}/classes"/>
+	<property name="build.dist.lib" value="${build.dist}/lib"/>
+	<property name="build.dependency" value="./lib"/>
+	<property name="build.src" value="./src"/>
+	<property name="build.docs" value="./docs"/>
+	<property name="report.dir"  value="./junitreport"/>
+	<property name="epp.jar" value="./bin"/>
+	<property name="junit.classes" value="./junitclasses/"/>
+
+	<!-- Global build parameters -->
+	<property file="epp.properties"/>
+	
+	<!-- Set this to 'yes' if you wish the classes
+	    to be compiled with debug information -->
+	<property name="build.debugInformation" value="off"/>
+
+	<!-- Build the project classpath -->
+	<path id="project.class.path">
+	  <fileset dir="${build.dependency}">
+	    <include name="*.jar"/>
+	  </fileset>
+	  <pathelement path="${build.dist.classes}/"/>
+	  <pathelement path="${junit.classes}/"/>    	
+	</path>
+
+	<!-- Build the junit classpath -->
+	<path id="rtk.jar.path">
+	  <fileset dir="${epp.jar}">
+	    <include name="*.jar"/>
+	  </fileset>
+	<pathelement path="${build.test}/"/>
+	</path>
+	
+	<target name="compile" depends="clean">
+		<echo message="Creating directories"/>
+		   <!-- Create the output directory -->
+		   <mkdir dir="${build.dist}"/>
+		   <mkdir dir="${build.dist.lib}"/>	
+		   <mkdir dir="${build.dist.classes}"/>
+		   <mkdir dir="${junit.classes}"/>
+		   <mkdir dir="${report.dir}"/>   	
+		   <!-- Copy the projects resources to the classpath -->
+		<echo message="Copying resource to classpath"/>
+		<copy todir="${build.dist.classes}" >
+			 <fileset dir="${build.src}" >
+				 <include name="**/*.png"/>
+				 <include name="**/*.gif"/>
+				 <include name="**/*.xpm"/>
+				 <include name="**/*.ico"/>
+			</fileset>
+       </copy>
+       <!-- Compile the source -->
+       <javac srcdir="${build.src}" debug="${build.debugInformation}"
+              destdir="${build.dist.classes}" includes="**/*.java"
+	      source="1.6" target="1.6">
+	       <classpath refid="project.class.path"/>
+       </javac>
+
+   	<!-- Compile the junit source -->
+    <javac srcdir="${build.test}" debug="${build.debugInformation}"
+           destdir="${junit.classes}" includes="**/*.java"
+	      source="1.6" target="1.6">
+	       <classpath refid="project.class.path"/>
+    </javac>	   	   
+	</target>
+    <target name="build" depends="compile">
+         <mkdir dir="${build.dist.lib}"/>
+
+         <!-- Build the epp library files -->
+ 	         <jar jarfile="${build.dist.lib}/epp-${epp.version.major}.${epp.version.minor}.${epp.version.build}.jar" basedir="${build.dist.classes}">
+                <include name="com/neulevel/epp/**/*.class"/>
+                <manifest>
+                   <attribute name="Product-Version"
+                         value="${epp.version.major}.${epp.version.minor}.${epp.version.build}"/>
+                 </manifest>
+             </jar>
+
+    </target>
+
+  <!-- Clean up all the generated files -->
+  <target name="clean" >
+    <!-- delete the classpath -->
+    <delete dir="${build.dist.classes}"/>
+    <delete dir="${build.dist.lib}"/>
+    <delete dir="${build.dist}"/>
+	<delete dir="${junit.classes}"/>
+  	<delete dir="${report.dir}"/>
+  </target>
+
+	<!-- Running Junit Test Cases -->
+   <target name="junit" depends="build">
+        <junit printsummary="yes" showoutput="yes" fork="no">
+        <!--	<jvmarg value="-DxsdPath=${user.dir}${file.separator}${xsdPath}"/> -->
+            <classpath>
+                <path refid="project.class.path"/>
+                <path refid="rtk.jar.path"/>
+            </classpath>
+            <formatter type="xml" />
+			<batchtest fork="yes" todir="${report.dir}">
+                <fileset dir="${junit.classes}" includes="com/"/>
+            </batchtest>
+		</junit>
+	</target>
+		
+	<!-- Running Junit Report-->
+	<target name="junitreport" depends="junit">
+	        <junitreport todir="${report.dir}">
+	            <fileset dir="${report.dir}"/>
+	            <report todir="${report.dir}"/>
+	        </junitreport>
+	</target>
+	
+</project>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+  <response>
+    <result code="1000">
+      <msg>Command completed successfully</msg>
+    </result>
+    <resData>
+      <xriAU:infData
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:authId>FOO-BAR-ID</xriAU:authId>
+        <xriAU:escrowAgent>
+          <xriAU:authId>@</xriAU:authId>
+        </xriAU:escrowAgent>
+        <xriAU:contactAgent>
+          <xriAU:authId>@!(!!1234!5678)</xriAU:authId>
+        </xriAU:contactAgent>
+        <xriAU:roid>AU_1002-NEUSTAR</xriAU:roid>
+        <xriAU:status s="clientDeleteProhibited"/>
+        <xriAU:status s="clientUpdateProhibited"/>
+        <xriAU:socialData>
+          <xriAU:postalInfo>
+            <xriAU:name>John Doe</xriAU:name>
+            <xriAU:org>Foo Bar, Inc.</xriAU:org>
+            <xriAU:addr>
+              <xriAU:street>123 Example Dr.</xriAU:street>
+              <xriAU:street>Suite 100</xriAU:street>
+              <xriAU:city>Dulles</xriAU:city>
+              <xriAU:sp>VA</xriAU:sp>
+              <xriAU:pc>20166-6503</xriAU:pc>
+              <xriAU:cc>US</xriAU:cc>
+            </xriAU:addr>
+          </xriAU:postalInfo>
+          <xriAU:voice x="1234">+1.7035555555</xriAU:voice>
+          <xriAU:voice x="1235">+1.7035555555</xriAU:voice>
+          <xriAU:fax>+1.7035555556</xriAU:fax>
+          <xriAU:pager x="1234">+1.7035555557</xriAU:pager>
+          <xriAU:email>jdoe@example.biz</xriAU:email>
+          <xriAU:email>jdoe@example.com</xriAU:email>
+        </xriAU:socialData>
+        <xriAU:trustee external="0">
+          <xriAU:authId>FOO-BAR-BIZ</xriAU:authId>
+        </xriAU:trustee>
+        <xriAU:trustee external="0">
+          <xriAU:inumber>=!1004.222.333.5555</xriAU:inumber>
+        </xriAU:trustee>
+        <xriAU:trustee external="1">
+          <xriAU:authId>@FOO-BAR-BIZ</xriAU:authId>
+        </xriAU:trustee>
+        <xriAU:trustee external="1">
+          <xriAU:inumber>@!2004.222.333.5555</xriAU:inumber>
+        </xriAU:trustee>
+        <xriAU:ref priority="10">!!1002</xriAU:ref>
+        <xriAU:ref priority="15">!!1003!1004</xriAU:ref>
+        <xriAU:ref priority="20">!!1005!(=!1111.2222.3333.4444)</xriAU:ref>
+        <xriAU:iname>=Foo.Bar</xriAU:iname>
+        <xriAU:iname>=Foo.Bar.2</xriAU:iname>
+        <xriAU:inumber priority="10">
+          =!1004.2222.3333.4444</xriAU:inumber>
+        <xriAU:inumber priority="15">
+          =!1005.2222.3333.4444</xriAU:inumber>
+        <xriAU:iservice>Single-Sign-On-1</xriAU:iservice>
+        <xriAU:iservice>Contact-Me-1</xriAU:iservice>
+        <xriAU:clID>ClientY</xriAU:clID>
+        <xriAU:crID>ClientX</xriAU:crID>
+        <xriAU:crDate>2005-05-03T22:00:00.0Z</xriAU:crDate>
+        <xriAU:upID>ClientX</xriAU:upID>
+        <xriAU:upDate>2005-05-05T09:00:00.0Z</xriAU:upDate>
+        <xriAU:trDate>2005-05-04T09:00:00.0Z</xriAU:trDate>
+        <xriAU:authInfo>
+          <xriAU:pw>2fooBAR</xriAU:pw>
+        </xriAU:authInfo>
+      </xriAU:infData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12346</clTRID>
+      <svTRID>54321-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

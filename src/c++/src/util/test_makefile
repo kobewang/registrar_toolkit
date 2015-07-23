@@ -1,0 +1,12 @@
+XERCES_INC_PATH=-I/home/santosh/GIT/Xxrp_tld/deps64/xerces-c-3.1.1/include/
+XERCES_LIB_PATH=-L/home/santosh/GIT/Xxrp_tld/deps64/xerces-c-3.1.1/lib/
+
+
+all:ns
+
+ns:
+	g++ -g TestXercesString.cpp XercesString.cpp $(XERCES_INC_PATH)  $(XERCES_LIB_PATH) -lxerces-c -o TestXercesString
+	g++ -g EppNamespaceParser.cpp XercesString.cpp $(XERCES_INC_PATH)  $(XERCES_LIB_PATH) -lxerces-c -o EppNamespaceParser
+
+clean:
+	rm -fr *.o TestXercesString EppNamespaceParser

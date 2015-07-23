@@ -1,0 +1,95 @@
+#******************************************************************************
+# The MIT License (MIT)
+#  
+# Copyright (c) 2015 Neustar Inc.
+#  
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#  
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#  
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#******************************************************************************
+#
+# $Id: Makefile.win32.bad,v 1.2 2006/03/01 01:35:37 wtan Exp $
+#
+# This is the Makefile for building EPP C++ Implementation on Win32
+#
+# Makefile.win32 for directory . (src)
+
+# General Win32 stuff
+
+#
+# WIN32_DEBUG is ether _DEBUG or NDEBUG, for building with or without debug info
+#
+WIN32_DEBUG=_DEBUG
+#
+# WIN32_LIB either .lib or .dll, for generating either static or dynamic library
+#
+WIN32_LIB=.lib
+#WIN32_LIB=.dll
+#
+# Xerces stuff
+#
+XERCES_INC_DIR=d:/xerces-c/include
+ifeq (${WIN32_DEBUG}, _DEBUG)
+      XERCES_LIB=d:/xerces-c/lib/xerces-c_1D.lib
+      XERCES_DLL=d:/xerces-c/bin/xerces-c_1_5_1D.dll
+else
+      XERCES_LIB=d:/xerces-c/lib/xerces-c_1.lib
+      XERCES_DLL=d:/xerces-c/bin/xerces-c_1_5_1.dll
+endif
+#
+# OpenSSL
+#
+OPENSSL_INC_DIR=d:/ssl/include
+OPENSSL_LIB=d:/ssl/lib/libeay32.lib d:/ssl/lib/ssleay32.lib
+OPENSSL_DLL=d:/ssl/bin/libeay32.dll d:/ssl/bin/ssleay32.dll
+#
+# Platform dependent options
+#
+PLATFORM=win32
+CXX=cl
+ifeq (${WIN32_DEBUG}, _DEBUG)
+     CXXFLAGS=/Od /Zi
+     ifeq (${WIN32_LIB}, .dll)
+          PLATFORM_OPTIONS=/nologo /MDd /W3 /GX /D "_CRTDBG_MAP_ALLOC" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "$(PLATFORM)" /D "_REENTRANT" /D "EPP_EXPORT=__declspec(dllexport)"
+     else
+          PLATFORM_OPTIONS=/nologo /MLd /W3 /GX /D "_CRTDBG_MAP_ALLOC" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "$(PLATFORM)" /D "_REENTRANT" /D "EPP_EXPORT="
+     endif
+else
+     CXXFLAGS=/O2
+     ifeq (${WIN32_LIB}, .dll)
+          PLATFORM_OPTIONS=/nologo /MD  /W3 /GX /D                     /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "$(PLATFORM)" /D "_REENTRANT" /D "EPP_EXPORT=__declspec(dllexport)"
+     else
+          PLATFORM_OPTIONS=/nologo /ML  /W3 /GX /D                     /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "$(PLATFORM)" /D "_REENTRANT" /D "EPP_EXPORT="
+     endif
+endif
+ifeq (${WIN32_LIB}, .dll)
+      MAKE_SHARED = link /dll
+else
+      MAKE_SHARED = lib
+endif
+ALLLIBS = ${LIBS} $(XERCES_LIB) $(OPENSSL_LIB) wsock32.lib 
+O=obj
+EXE=.EXE
+SHLIBSUFFIX=${WIN32_LIB}
+#
+# Standard tools
+#
+MKDIR = mkdir -p
+RM = -rm -f
+CP = cp
+MV = mv
+CC1 = $(CXX) $(PLATFORM_OPTIONS)

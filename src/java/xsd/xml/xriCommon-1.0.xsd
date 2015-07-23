@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:xriCommon-1.0"
+        xmlns:xriCommon="urn:ietf:params:xml:ns:xriCommon-1.0"
+        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+<!--
+Import common element types.
+-->
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+          schemaLocation="eppcom-1.0.xsd"/>
+
+  <annotation>
+    <documentation>
+      Extensible Provisioning Protocol v1.0
+      Shared XML schema for XRI Authority, I-Name and
+      I-Number Provisioning.
+    </documentation>
+  </annotation>
+
+<!--
+I-Number type.
+-->
+  <simpleType name="inumberType">
+    <restriction base="token">
+      <minLength value="1"/>
+      <maxLength value="255"/>
+    </restriction>
+  </simpleType>
+
+<!--
+I-Name type.
+-->
+  <simpleType name="inameType">
+    <restriction base="token">
+      <minLength value="1"/>
+      <maxLength value="255"/>
+    </restriction>
+  </simpleType>
+
+<!--
+I-Service Id type.
+-->
+  <simpleType name="iServiceIdType">
+    <restriction base="token">
+      <minLength value="1"/>
+      <maxLength value="255"/>
+    </restriction>
+  </simpleType>
+
+<!--
+Authority Id type.
+-->
+  <simpleType name="authIdType">
+    <restriction base="token">
+      <minLength value="1"/>
+      <maxLength value="255"/>
+    </restriction>
+  </simpleType>
+
+<!--
+XRI string type.
+-->
+  <simpleType name="xriType">
+    <restriction base="token">
+      <minLength value="1"/>
+    </restriction>
+  </simpleType>
+
+<!--
+Transfer Token type.
+-->
+  <simpleType name="trTokenType">
+    <restriction base="token">
+      <minLength value="6"/>
+      <maxLength value="255"/>
+    </restriction>
+  </simpleType>
+
+<!--
+Period Limit type.
+-->
+  <simpleType name="pLimitType">
+    <restriction base="unsignedShort">
+      <minInclusive value="1"/>
+      <maxInclusive value="99"/>
+    </restriction>
+  </simpleType>
+
+<!--
+Period Unit type.
+-->
+
+  <simpleType name="pUnitType">
+    <restriction base="token">
+      <enumeration value="y"/>
+      <enumeration value="m"/>
+    </restriction>
+  </simpleType>
+
+<!--
+End of schema.
+-->
+</schema>

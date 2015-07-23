@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>com.neulevel.epp.core package</title>
+<!--
+   - The MIT License (MIT)
+   -  
+   - Copyright (c)2015 Neustar Inc.
+   -  
+   - Permission is hereby granted, free of charge, to any person obtaining a copy
+   - of this software and associated documentation files (the "Software"), to deal
+   - in the Software without restriction, including without limitation the rights
+   - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   - copies of the Software, and to permit persons to whom the Software is
+   - furnished to do so, subject to the following conditions:
+   -  
+   - The above copyright notice and this permission notice shall be included in
+   - all copies or substantial portions of the Software.
+   -  
+   - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+   - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+   - THE SOFTWARE.
+-->
+</head>
+<body bgcolor="white">
+This package defines and implements core components for the EPP Protocol.
+It includes various object and entity definitions used in the EPP Protocol
+and provides mechanisms for converting objects between Java and XML formats.
+
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TD COLSPAN=2><FONT SIZE="+2">
+<B>Summary of API Changes Since EPP-04</B></FONT></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppAddress.html" title="class in com.neulevel.epp.core">EppAddress</A></B></TD>
+<TD>
+The maximum length of the street, city and state/provice fields was initially
+defined as 32 in EPP-04, then extended by NeuLevel to 64, and finally specified
+as 255 in EPP-1.0.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppAuthInfo.html" title="class in com.neulevel.epp.core">EppAuthInfo</A></B></TD>
+<TD>
+The "<A HREF="../../../../com/neulevel/epp/core/EppAuthInfo.html#TYPE_EXT">ext</A>" type is not implemented in the release.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppContact.html" title="class in com.neulevel.epp.core">EppContact</A></B></TD>
+<TD>
+New status values have been defined for EPP-1.0, however, NeuLevel has no immediate plan for using them in the near future:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppContact.html#STATUS_PENDING_CREATE">STATUS_PENDING_CREATE</A> - pendingCreate</LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppContact.html#STATUS_PENDING_UPDATE">STATUS_PENDING_UPDATE</A> - pendingUpdate</LI>
+</UL>
+Access methods have been added for setting/getting contact data in internationalized
+form and localized form. This is to replace the old "ascii" and "i18d" contact data
+respectively:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppContact.html#getContactDataInt()">getContactDataInt()</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppContact.html#setContactDataInt(com.neulevel.epp.core.EppContactData)">setContactDataInt()</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppContact.html#getContactDataLoc()">getContactDataLoc()</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppContact.html#setContactDataLoc(com.neulevel.epp.core.EppContactData)">setContactDataLoc()</A></LI>
+</UL>
+Access methods have been added for setting/getting contact data disclosure setting:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppContact.html#getContactDisclose()">getContactDisclose()</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppContact.html#setContactDataLoc(com.neulevel.epp.core.EppContactData)">setContactDisclose()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppContactData.html" title="class in com.neulevel.epp.core">EppContactData</A></B></TD>
+<TD>
+The maximum length of the <I>name</I> and <I>org</I> fields of a postal line was initially
+defined as 32 in EPP-04, then extended by NeuLevel to 64, and finally specified
+as 255 in EPP-1.0.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppContactDisclose.html" title="class in com.neulevel.epp.core">EppContactDisclose</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppContactType.html" title="class in com.neulevel.epp.core">EppContactType</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppDataCollectionPolicy.html" title="class in com.neulevel.epp.core">EppDataCollectionPolicy</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppDataCollectionStatement.html" title="class in com.neulevel.epp.core">EppDataCollectionStatement</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppDomain.html" title="class in com.neulevel.epp.core">EppDomain</A></B></TD>
+<TD>
+New status values have been defined for EPP-1.0, however, NeuLevel has no immediate plan for using them in the near future:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppDomain.html#STATUS_PENDING_CREATE">STATUS_PENDING_CREATE</A> - pendingCreate</LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppDomain.html#STATUS_PENDING_UPDATE">STATUS_PENDING_UPDATE</A> - pendingUpdate</LI>
+</UL>
+The following status value, defined in EPP-04, have been removed for EPP-1.0:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppDomain.html#STATUS_PENDING_VERIFICATION">STATUS_PENDING_VERIFICATION</A> - pendingVerification</LI>
+</UL>
+Accesses methods have been added for handling name servers as "host attributes",
+specified via <A HREF="../../../../com/neulevel/epp/core/EppHostAttribute.html">EppHostAttribute</A> objects:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppDomain.html#addNameServer(com.neulevel.epp.core.EppHostAttribute)">addNameServer()</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppDomain.html#getNameServerHostAttribute()">getNameServerHostAttribute()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppE164.html" title="class in com.neulevel.epp.core">EppE164</A></B></TD>
+<TD>
+The maximum length of an ITU E.164 phone number have been extended to 17 in EPP-1.0,
+from 15 in EPP-04.
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppEntity.html" title="class in com.neulevel.epp.core">EppEntity</A></B></TD>
+<TD>
+No change
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppError.html" title="class in com.neulevel.epp.core">EppError</A></B></TD>
+<TD>
+EPP result code 1301 has been assigned with a fixed text message in EPP-1.0.
+Sucessful responeses for pending actions should use EPP result code 1001,
+which is added in EPP-1.0. Also, the meaning of EPP result code 2501 has been
+changed in EPP-1.0.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppGreeting.html" title="class in com.neulevel.epp.core">EppGreeting</A></B></TD>
+<TD>
+Access methods have been added for setting/getting an
+<A HREF="../../../../com/neulevel/epp/core/EppDataCollectionPolicy.html">EppDataCollectionPolicy</A> object:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppGreeting.html#getDataCollectionPolicy()">getDataCollectionPolicy()</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppGreeting.html#setDataCollectionPolicy(com.neulevel.epp.core.EppDataCollectionPolicy)">setDataCollectionPolicy()</A></LI>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppHello.html" title="class in com.neulevel.epp.core">EppHello</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppHost.html" title="class in com.neulevel.epp.core">EppHost</A></B></TD>
+<TD>
+New status values have been defined for EPP-1.0, however, NeuLevel has no immediate plan for using them in the near future:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppHost.html#STATUS_PENDING_CREATE">STATUS_PENDING_CREATE</A> - pendingCreate</LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppHost.html#STATUS_PENDING_UPDATE">STATUS_PENDING_UPDATE</A> - pendingUpdate</LI>
+</UL>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppHostAttribute.html" title="class in com.neulevel.epp.core">EppHostAttribute</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppIpAddress.html" title="class in com.neulevel.epp.core">EppIpAddress</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppObject.html" title="class in com.neulevel.epp.core">EppObject</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppParser.html" title="class in com.neulevel.epp.core">EppParser</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppPeriod.html" title="class in com.neulevel.epp.core">EppPeriod</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppServiceMenu.html" title="class in com.neulevel.epp.core">EppServiceMenu</A></B></TD>
+<TD>
+Access methods have been added for adding/getting service extensions:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppServiceMenu.html#getServiceExtension()">getServiceExtension()</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/core/EppServiceMenu.html#addServiceExtension(java.lang.String)">addServiceExtension()</A></LI>
+</UL>
+The services or service extensions must be specified via URIs in EPP-1.0,
+instead of special "svc" tags in EPP-04.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppStatus.html" title="class in com.neulevel.epp.core">EppStatus</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppSvcsub.html" title="class in com.neulevel.epp.core">EppSvcsub</A></B></TD>
+<TD>
+No change, although new status values may be added in the future.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppSvcsubParam.html" title="class in com.neulevel.epp.core">EppSvcsubParam</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppTransactionId.html" title="class in com.neulevel.epp.core">EppTransactionId</A></B></TD>
+<TD>
+No change
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppUnspec.html" title="class in com.neulevel.epp.core">EppUnspec</A></B></TD>
+<TD>
+No change, although this has become a special class for handling NeuLevel's EPP extension
+with full name space specification required in the XML representation.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/core/EppUtil.html" title="class in com.neulevel.epp.core">EppUtil</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+</TABLE>
+
+</body>
+</html>

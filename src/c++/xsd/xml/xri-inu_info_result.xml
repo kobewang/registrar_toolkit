@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+  <response>
+    <result code="1000">
+      <msg>Command completed successfully</msg>
+    </result>
+    <resData>
+      <xriINU:infData
+       xmlns:xriINU="urn:ietf:params:xml:ns:xriINU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriINU-1.0
+       xriINU-1.0.xsd">
+        <xriINU:inumber>@!1234.5678.90AB.CDEF</xriINU:inumber>
+        <xriINU:roid>INU_1002-NEUSTAR</xriINU:roid>
+        <xriINU:status s="clientDeleteProhibited"/>
+        <xriINU:status s="clientUpdateProhibited"/>
+        <xriINU:refId>CLIENT-X-REF-ID-12345</xriINU:refId>
+        <xriINU:authId>AUTHORITY</xriINU:authId>
+        <xriINU:priority>10</xriINU:priority>
+        <xriINU:clID>ClientY</xriINU:clID>
+        <xriINU:crID>ClientX</xriINU:crID>
+        <xriINU:crDate>2005-05-03T22:00:00.0Z</xriINU:crDate>
+        <xriINU:upID>ClientX</xriINU:upID>
+        <xriINU:upDate>2005-05-05T09:00:00.0Z</xriINU:upDate>
+        <xriINU:exDate>2006-05-03T22:00:00.0Z</xriINU:exDate>
+        <xriINU:trDate>2005-05-04T09:00:00.0Z</xriINU:trDate>
+      </xriINU:infData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12346</clTRID>
+      <svTRID>54321-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

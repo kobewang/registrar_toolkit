@@ -1,0 +1,141 @@
+/*******************************************************************************
+ * The MIT License (MIT)
+ *  
+ * Copyright (c)2015 Neustar Inc.
+ *  
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *  
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *  
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *******************************************************************************/
+
+Running EPP Test Server/Client with TCP/TLS as Transport
+========================================================
+
+0. Requirements:
+
+   o JDK 1.4.2 or later 
+
+   o Apache Xerces Java Parser 1.4.2 or later
+
+     Xerces 1.4.2 can be downloaded from:
+
+         http://xml.apache.org/dist/xml/xerces-j/
+
+     or
+
+         http://archive.apache.org/dist/xml/xerces-j/
+
+1. Install JSSE jar files, if needed
+
+        Copy the following files to:
+
+                jcert.jar
+                jnet.jar
+                jsse.jar
+
+        To
+                ${JAVA_HOME}/jre/lib/ext
+
+   where JAVA_HOME is the directory where the JDK is installed.
+
+2. Edit java.security file, if needed
+
+        Edit file:
+
+                ${JAVA_HOME}/jre/lib/security/java.security
+
+        to add SunJSSE provider. Add a line "security.provider.2..." like:
+
+                security.provider.1=sun.security.provider.Sun
+                security.provider.2=com.sun.net.ssl.internal.ssl.Provider
+
+3. The testkeys.server.prop file contains the properties for test private keys
+   and public certicates for running the EPP Test Server with TCP/TLS as the
+   transport. It must reside in the same directory where the test server is
+   running with the following files:
+
+         testkeys.server.prop     - EPP Server SSL Property File
+         testkeys.server.keystore - EPP Server private/public key store
+         testkeys.server.trustore - EPP Server trust store (client public keys)
+
+4. The testkeys.client.prop file contains the properties for test private keys
+   and public certicates for running the EPP Test Client with TCP/TLS as the
+   transport. It must reside in the same directory where the test client is
+   running with the following files:
+
+         testkeys.client.prop     - EPP Client SSL Property File
+         testkeys.client.keystore - EPP Client private/public key store
+         testkeys.client.trustore - EPP Client trust store (server public keys)
+
+5. The EPP .xsd files must reside in the same directory where the test server
+   and client are running.
+
+6. Make sure the EPP API jar file, epp.jar, and Xerces 1.4.2 jar file,
+   xercers.jar, are included in the CLASSPATH environment variable.
+
+7. Start the test server
+
+        java EppTestServerTcp port [tls.prop]
+
+   where port is the port number to which the test server is listening,
+   and tls.prop is optional for indicating if TLS is used for transport layer
+   security and points to the file of EPP Server SSL Property file.
+   For example:
+
+        java EppTestServerTcp 10288 testkeys.server.prop
+
+   If you want to start the server without TLS, the command would be:
+
+        java EppTestServerTcp 10288
+
+   To make the test server return XML messages that can be parsed by other
+   RTKs, such as Tucows', that expect fully specified namespace prefixes, add
+   -Dcom.neulevel.epp.core.EppUtil.fullNamespace run-time option, for
+   example:
+
+        java -Dcom.neulevel.epp.core.EppUtil.fullNamespace EppTestServerTcp 10288
+
+8. After the test server is started, i.e. after the message like
+
+        Server started with...
+
+   showed up, start the test client:
+
+        java EppTestClient tcp[-tls] hostname port
+
+   where hostname is the name of the host on which the test server is running,
+   and port is the port number on the server to which the client is connected.
+   The transport could be tcp, for using TCP with TLS, or tcp-tls, for using
+   TCP without TLS.
+
+   If both the client and server are running on the same machine, the hostname
+   can be specified as "localhost". For example:
+
+        java EppTestClient tcp localhost 10288
+
+   If the server does not require TLS, the command would be:
+
+	java EppTestClient tcp-tls localhost 10288
+
+   To make the test client send XML messages that can be parsed by other
+   RTKs, such as Tucows', that expect fully specified namespace prefixes, add
+   -Dcom.neulevel.epp.core.EppUtil.fullNamespace run-time option, for
+   example:
+
+        java -Dcom.neulevel.epp.core.EppUtil.fullNamespace EppTestClient ...
+
+--EOF-- $Id: RunTestTcp,v 1.1 2005/12/06 20:11:38 wtan Exp $

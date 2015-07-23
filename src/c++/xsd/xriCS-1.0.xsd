@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="urn:ietf:params:xml:ns:xriCS-1.0" xmlns:xriCS="urn:ietf:params:xml:ns:xriCS-1.0" xmlns:xriINA="urn:ietf:params:xml:ns:xriINA-1.0" xmlns:xriCommon="urn:ietf:params:xml:ns:xriCommon-1.0" xmlns:epp="urn:ietf:params:xml:ns:epp-1.0" xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <import namespace="urn:ietf:params:xml:ns:epp-1.0" schemaLocation="epp-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:xriCommon-1.0" schemaLocation="xriCommon-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:xriINA-1.0" schemaLocation="xriINA-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:xriINU-1.0" schemaLocation="xriINU-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:xriAU-1.0" schemaLocation="xriAU-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:xriISV-1.0" schemaLocation="xriISV-1.0.xsd"/>
+  <annotation>
+    <documentation>
+    </documentation>
+  </annotation>
+  <element name="check" type="xriCS:mIdType"/>
+  <element name="create" type="xriCS:createType"/>
+  <element name="delete" type="xriCS:sIdType"/>
+  <element name="info" type="xriCS:infoType"/>
+  <element name="renew" type="xriCS:renewType"/>
+  <element name="transfer" type="xriCS:transferType"/>
+  <element name="update" type="xriCS:updateType"/>
+  <simpleType name="codeStringType">
+    <restriction base="token">
+      <minLength value="1"/>
+    </restriction>
+  </simpleType>
+  <complexType name="sIdType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+    </sequence>
+  </complexType>
+  <complexType name="mIdType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="vasExtType">
+    <sequence>
+      <element name="vas" type="xriCS:vasType" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="vasType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="name" type="string" use="required"/>
+      </extension>
+    </simpleContent>
+	</complexType>
+
+  <complexType name="createType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+      <element name="parentIname" type="xriCommon:inameType"/>
+      <element name="usedResolutionUnits" type="integer" minOccurs="0"/>
+      <element name="totalResolutionUnits" type="integer" minOccurs="0"/>
+      <element name="usedMonetaryCap" type="integer" minOccurs="0"/>
+      <element name="totalMonetaryCap" type="integer" minOccurs="0"/>
+      <element name="resolutionStartDate" type="dateTime" minOccurs="0"/>
+      <element name="resolutionEndDate" type="dateTime" minOccurs="0"/>
+      <element name="resolutionIntervalRecurrencePattern" type="xriCS:resolutionIntervalRecurrencePatternType" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="period" type="xriINA:periodType" minOccurs="0"/>
+			<element name="ext" type="xriCS:vasExtType" minOccurs="0"/>
+			<element name="extension"  type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="authorityType">
+    <sequence>
+      <element name="authId" type="xriCommon:authIdType"/>
+      <element name="authInfo" type="xriINA:authInfoType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="infoType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+    </sequence>
+  </complexType>
+  <complexType name="renewType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+      <element name="curExpDate" type="date"/>
+      <element name="period" type="xriINA:periodType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="transferType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+      <element name="target" type="xriCommon:inameType" minOccurs="0"/>
+      <element name="period" type="xriINA:periodType" minOccurs="0"/>
+      <element name="trToken" type="xriCommon:trTokenType" minOccurs="0"/>
+      <element name="authInfo" type="xriINA:authInfoType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="updateType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+      <element name="add" type="xriCS:addRemType" minOccurs="0"/>
+      <element name="rem" type="xriCS:addRemType" minOccurs="0"/>
+      <element name="chg" type="xriCS:chgType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="addRemType">
+    <sequence>
+      <element name="status" type="xriINA:statusType" maxOccurs="12" minOccurs="0"/>
+      <element name="resolutionIntervalRecurrencePattern" type="xriCS:resolutionIntervalRecurrencePatternType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ext" type="xriCS:vasExtType" minOccurs="0"/>
+			<element name="extension"  type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="chgType">
+    <sequence>
+      <element name="totalResolutionUnits" type="xriCS:updUnitsType" minOccurs="0"/>
+      <element name="totalMonetaryCap" type="xriCS:updUnitsType" minOccurs="0"/>
+      <element name="resolutionStartDate" type="xriCS:updResolutionDateType" minOccurs="0"/>
+      <element name="resolutionEndDate" type="xriCS:updResolutionDateType" minOccurs="0"/>
+			<element name="extension"  type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="updResolutionDateType">
+    <simpleContent>
+      <extension base="dateTime">
+        <attribute name="action" type="xriCS:dateActionType"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <simpleType name="dateActionType">
+    <restriction base="token">
+      <enumeration value="del"/>
+    </restriction>
+  </simpleType>
+  <complexType name="updUnitsType">
+    <simpleContent>
+      <extension base="integer">
+        <attribute name="action" type="xriCS:intActionType"/>
+        <attribute name="base" type="integer"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <simpleType name="intActionType">
+    <restriction base="token">
+      <enumeration value="del"/>
+      <enumeration value="inc"/>
+      <enumeration value="dec"/>
+    </restriction>
+  </simpleType>
+  <complexType name="resolutionIntervalRecurrencePatternType">
+    <sequence>
+      <element name="recPatternId" type="eppcom:clIDType" minOccurs="1"/>
+      <element name="min" type="string" minOccurs="0"/>
+      <element name="hrs" type="string" minOccurs="0"/>
+      <element name="dom" type="string" minOccurs="0"/>
+      <element name="mon" type="string" minOccurs="0"/>
+      <element name="dow" type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <element name="chkData" type="xriCS:chkDataType"/>
+  <element name="creData" type="xriCS:creDataType"/>
+  <element name="infData" type="xriCS:infDataType"/>
+  <element name="panData" type="xriCS:panDataType"/>
+  <element name="renData" type="xriCS:renDataType"/>
+  <element name="trnData" type="xriCS:trnDataType"/>
+  <complexType name="chkDataType">
+    <sequence>
+      <element name="cd" type="xriCS:checkType" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  <complexType name="checkType">
+    <sequence>
+      <element name="codeString" type="xriCS:checkIdType"/>
+      <element name="reason" type="eppcom:reasonType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="checkIdType">
+    <simpleContent>
+      <extension base="xriCS:codeStringType">
+        <attribute name="avail" type="boolean" use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <complexType name="creDataType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+      <element name="crDate" type="dateTime"/>
+      <element name="exDate" type="dateTime" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="infDataType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+      <element name="roid" type="eppcom:roidType"/>
+      <element name="status" type="xriINA:statusType" maxOccurs="12"/>
+      <element name="parentIname" type="xriCommon:inameType"/>
+      <element name="authId" type="xriCommon:authIdType" minOccurs="0"/>
+      <element name="usedResolutionUnits" type="integer" minOccurs="0"/>
+      <element name="totalResolutionUnits" type="integer" minOccurs="0"/>
+      <element name="usedMonetaryCap" type="integer" minOccurs="0"/>
+      <element name="totalMonetaryCap" type="integer" minOccurs="0"/>
+      <element name="resolutionStartDate" type="dateTime" minOccurs="0"/>
+      <element name="resolutionEndDate" type="dateTime" minOccurs="0"/>
+      <element name="resolutionIntervalRecurrencePattern" type="xriCS:resolutionIntervalRecurrencePatternType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="period"     type="xriINA:periodType" minOccurs="0"/>
+			<element name="ext" type="xriCS:vasExtType" minOccurs="0"/>
+      <element name="extension"  type="string" minOccurs="0"/>
+      <element name="clID"       type="eppcom:clIDType"/> 
+      <element name="crID"       type="eppcom:clIDType"/>
+      <element name="crDate"     type="dateTime"/>
+      <element name="upID"       type="eppcom:clIDType" minOccurs="0"/>
+      <element name="upDate"     type="dateTime" minOccurs="0"/>
+      <element name="trDate"     type="dateTime" minOccurs="0"/>
+      <element name="authInfo"   type="xriCS:authInfoType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="renDataType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+      <element name="exDate" type="dateTime"/>
+    </sequence>
+  </complexType>
+  <complexType name="trnDataType">
+    <sequence>
+      <element name="codeString" type="xriCS:codeStringType"/>
+      <element name="source" type="xriCommon:inameType"/>
+      <element name="target" type="xriCommon:inameType"/>
+      <element name="trToken" type="xriCommon:trTokenType" minOccurs="0"/>
+      <element name="trStatus" type="eppcom:trStatusType"/>
+      <element name="reID" type="eppcom:clIDType"/>
+      <element name="reDate" type="dateTime"/>
+      <element name="acID" type="eppcom:clIDType"/>
+      <element name="acDate" type="dateTime"/>
+      <element name="exDate" type="dateTime" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="statusType">
+    <simpleContent>
+      <extension base="normalizedString">
+        <attribute name="s" type="xriINA:statusValueType" use="required"/>
+        <attribute name="lang" type="language" default="en"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <simpleType name="statusValueType">
+    <restriction base="token">
+      <enumeration value="clientDeleteProhibited"/>
+      <enumeration value="clientHold"/>
+      <enumeration value="clientRenewProhibited"/>
+      <enumeration value="clientTransferProhibited"/>
+      <enumeration value="clientUpdateProhibited"/>
+      <enumeration value="ok"/>
+      <enumeration value="pendingCreate"/>
+      <enumeration value="pendingDelete"/>
+      <enumeration value="pendingUpdate"/>
+      <enumeration value="pendingTransfer"/>
+      <enumeration value="serverDeleteProhibited"/>
+      <enumeration value="serverHold"/>
+      <enumeration value="serverRenewProhibited"/>
+      <enumeration value="serverTransferProhibited"/>
+      <enumeration value="serverUpdateProhibited"/>
+    </restriction>
+  </simpleType>
+  <complexType name="panDataType">
+    <sequence>
+      <element name="codeString" type="xriINA:paIdType"/>
+      <element name="paTRID" type="epp:trIDType"/>
+      <element name="paDate" type="dateTime"/>
+    </sequence>
+  </complexType>
+  <complexType name="paIdType">
+    <simpleContent>
+      <extension base="xriCommon:inameType">
+        <attribute name="paResult" type="boolean" use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <complexType name="authInfoType">
+    <choice>
+      <element name="pw" type="eppcom:pwAuthInfoType"/>
+      <element name="ext" type="eppcom:extAuthInfoType"/>
+    </choice>
+  </complexType>
+  <complexType name="periodType">
+    <simpleContent>
+      <extension base="xriCommon:pLimitType">
+        <attribute name="unit" type="xriCommon:pUnitType" use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+</schema>
+

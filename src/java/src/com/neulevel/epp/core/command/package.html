@@ -1,0 +1,318 @@
+!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>com.neulevel.epp.core.command package</title>
+<!--
+   - The MIT License (MIT)
+   -  
+   - Copyright (c)2015 Neustar Inc.
+   -  
+   - Permission is hereby granted, free of charge, to any person obtaining a copy
+   - of this software and associated documentation files (the "Software"), to deal
+   - in the Software without restriction, including without limitation the rights
+   - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   - copies of the Software, and to permit persons to whom the Software is
+   - furnished to do so, subject to the following conditions:
+   -  
+   - The above copyright notice and this permission notice shall be included in
+   - all copies or substantial portions of the Software.
+   -  
+   - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+   - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+   - THE SOFTWARE.
+-->
+</head>
+<body bgcolor="white">
+This package implements various commands and related components for the
+EPP Protocol. These commands are used for a registrar client to perform
+operations on various objects in the registry server.
+
+<P>
+
+<TABLE BORDER="1" VALIGN="TOP" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TD COLSPAN=2><FONT SIZE="+2">
+<B>Summary of API Changes Since EPP-04</B></FONT></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommand.html" title="class in com.neulevel.epp.core.command">EppCommand</A></B></TD>
+<TD>
+Access methods remain defined, but not functional, for backward compatibility, but will be removed in the future release:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommand.html#getCreds()">getCreds()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommand.html#setCreds(com.neulevel.epp.core.command.EppCreds)">setCreds()</A></LI>
+</UL>
+Access methods have been added for adding/getting EPP extensions:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommand.html#addExtension(org.w3c.dom.Element)">addExtension()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommand.html#getExtension()">getExtension()</A></LI>
+</UL>
+Currently, <code>EppUnspec</code> is the only fully supported EPP extension.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandCheck.html" title="class in com.neulevel.epp.core.command">EppCommandCheck</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandCheckContact.html" title="class in com.neulevel.epp.core.command">EppCommandCheckContact</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandCheckDomain.html" title="class in com.neulevel.epp.core.command">EppCommandCheckDomain</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandCheckHost.html" title="class in com.neulevel.epp.core.command">EppCommandCheckHost</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandCheckSvcsub.html" title="class in com.neulevel.epp.core.command">EppCommandCheckSvcsub</A></B></TD>
+<TD>
+Access methods have been added for specifying an optional service identifier:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandCheckSvcsub.html#getService()">getService()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandCheckSvcsub.html#setService(java.lang.String)">setService()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandCreate.html" title="class in com.neulevel.epp.core.command">EppCommandCreate</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandDelete.html" title="class in com.neulevel.epp.core.command">EppCommandDelete</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandDeleteContact.html" title="class in com.neulevel.epp.core.command">EppCommandDeleteContact</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandDeleteDomain.html" title="class in com.neulevel.epp.core.command">EppCommandDeleteDomain</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandDeleteHost.html" title="class in com.neulevel.epp.core.command">EppCommandDeleteHost</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandDeleteSvcsub.html" title="class in com.neulevel.epp.core.command">EppCommandDeleteSvcsub</A></B></TD>
+<TD>
+Access methods have been added for specifying an optional service identifier:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandDeleteSvcsub.html#getService()">getService()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandDeleteSvcsub.html#setService(java.lang.String)">setService()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfo.html" title="class in com.neulevel.epp.core.command">EppCommandInfo</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoContact.html" title="class in com.neulevel.epp.core.command">EppCommandInfoContact</A></B></TD>
+<TD>
+Access methods have been defined for setting/getting an optional <code>EppAuthInfo</code> object that is used as required authorization information:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoContact.html#getAuthInfo()">getAuthInfo()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoContact.html#setAuthInfo(com.neulevel.epp.core.EppAuthInfo)">setAuthInfo()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoDomain.html" title="class in com.neulevel.epp.core.command">EppCommandInfoDomain</A></B></TD>
+<TD>
+The following "hosts" option values have been defined:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoDomain.html#HOSTS_ALL">HOSTS_ALL</A> - all</LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoDomain.html#HOSTS_DEL">HOSTS_DEL</A> - del</LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoDomain.html#HOSTS_SUB">HOSTS_SUB</A> - sub</LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoDomain.html#HOSTS_NONE">HOSTS_NONE</A> - none</LI>
+</UL>
+Access methods have been defined for the above option values:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoDomain.html#getHostsControl()">getHostsControl()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoDomain.html#setHostsControl(java.lang.String)">setHostsControl()</A></LI>
+</UL>
+Access methods have been defined for setting/getting an optional <code>EppAuthInfo</code> object that is used as required authorization information:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoDomain.html#getAuthInfo()">getAuthInfo()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoDomain.html#setAuthInfo(com.neulevel.epp.core.EppAuthInfo)">setAuthInfo()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoHost.html" title="class in com.neulevel.epp.core.command">EppCommandInfoHost</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoSvcsub.html" title="class in com.neulevel.epp.core.command">EppCommandInfoSvcsub</A></B></TD>
+<TD>
+Access methods have been added for specifying an optional service identifier:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoSvcsub.html#getService()">getService()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandInfoSvcsub.html#setService(java.lang.String)">setService()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandLogin.html" title="class in com.neulevel.epp.core.command">EppCommandLogin</A></B></TD>
+<TD>
+Access methods have been added for duplicating access methods defined in class
+<A HREF="../../../../../com/neulevel/epp/core/command/EppCreds.html">EppCreds</A>,
+which will be deprecated in the future.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandLogout.html" title="class in com.neulevel.epp.core.command">EppCommandLogout</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandPoll.html" title="class in com.neulevel.epp.core.command">EppCommandPoll</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandRenew.html" title="class in com.neulevel.epp.core.command">EppCommandRenew</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandRenewDomain.html" title="class in com.neulevel.epp.core.command">EppCommandRenewDomain</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandRenewSvcsub.html" title="class in com.neulevel.epp.core.command">EppCommandRenewSvcsub</A></B></TD>
+<TD>
+Access methods have been added for specifying an optional service identifier:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandRenewSvcsub.html#getService()">getService()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandRenewSvcsub.html#setService(java.lang.String)">setService()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandTransfer.html" title="class in com.neulevel.epp.core.command">EppCommandTransfer</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandTransferContact.html" title="class in com.neulevel.epp.core.command">EppCommandTransferContact</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandTransferDomain.html" title="class in com.neulevel.epp.core.command">EppCommandTransferDomain</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandTransferSvcsub.html" title="class in com.neulevel.epp.core.command">EppCommandTransferSvcsub</A></B></TD>
+<TD>
+Access methods have been added for specifying an optional service identifier:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandTransferSvcsub.html#getService()">getService()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandTransferSvcsub.html#setService(java.lang.String)">setService()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdate.html" title="class in com.neulevel.epp.core.command">EppCommandUpdate</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateContact.html" title="class in com.neulevel.epp.core.command">EppCommandUpdateContact</A></B></TD>
+<TD>
+Access methods have been added for updating contact data in internationalized form and localized form.
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateContact.html#getNewContactDataInt()">getNewContactDataInt()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateContact.html#setNewContactDataInt(com.neulevel.epp.core.EppContactData)">setNewContactDataInt()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateContact.html#getNewContactDataLoc()">getNewContactDataLoc()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateContact.html#setNewContactDataLoc(com.neulevel.epp.core.EppContactData)">setNewContactDataLoc()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateContact.html#getNewContactDisclose()">getNewContactDisclose()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateContact.html#setNewContactDisclose(com.neulevel.epp.core.EppContactDisclose)">setNewContactDisclose()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateDomain.html" title="class in com.neulevel.epp.core.command">EppCommandUpdateDomain</A></B></TD>
+<TD>
+Access methods have been added for adding/removing name servers speciefied as "host attributes":
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateDomain.html#addNameServer(com.neulevel.epp.core.EppHostAttribute)">addNameServer()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateDomain.html#removeNameServer(com.neulevel.epp.core.EppHostAttribute)">removeNameServer()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateDomain.html#getNameServerHostAttributeAdded()">getNameServerHostAttributeAdded()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateDomain.html#getNameServerHostAttributeRemoved()">getNameServerHostAttributeRemoved()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateHost.html" title="class in com.neulevel.epp.core.command">EppCommandUpdateHost</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateSvcsub.html" title="class in com.neulevel.epp.core.command">EppCommandUpdateSvcsub</A></B></TD>
+<TD>
+Access methods have been added for specifying an optional service identifier:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateSvcsub.html#getService()">getService()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/command/EppCommandUpdateSvcsub.html#setService(java.lang.String)">setService()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCreds.html" title="class in com.neulevel.epp.core.command">EppCreds</A></B></TD>
+<TD>
+No change, but it is defined for backward compatibility and will be deprecated in the future.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/command/EppCredsOptions.html" title="class in com.neulevel.epp.core.command">EppCredsOptions</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+</TABLE>
+
+</body>
+</html>

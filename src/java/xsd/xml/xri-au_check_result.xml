@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+  <response>
+    <result code="1000">
+      <msg>Command completed successfully</msg>
+    </result>
+    <resData>
+      <xriAU:chkData
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:cd>
+          <xriAU:authId avail="0">FOO-BAR-ID</xriAU:authId>
+          <xriAU:reason>Reserved</xriAU:reason>
+        </xriAU:cd>
+        <xriAU:cd>
+          <xriAU:authId avail="1">JOHN-DOE-ID</xriAU:authId>
+        </xriAU:cd>
+        <xriAU:cd>
+          <xriAU:authId avail="0">ANYONE-ANYWHERE-ID</xriAU:authId>
+        </xriAU:cd>
+        <xriAU:cd>
+          <xriAU:authId avail="0">!!1234</xriAU:authId>
+        </xriAU:cd>
+        <xriAU:cd>
+          <xriAU:authId avail="1">=!1001.2222.3333.4444</xriAU:authId>
+        </xriAU:cd>
+        <xriAU:cd>
+          <xriAU:authId avail="0">@!1011.2222.3333.4444</xriAU:authId>
+          <xriAU:reason>Not authorized</xriAU:reason>
+        </xriAU:cd>
+      </xriAU:chkData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12345</clTRID>
+      <svTRID>54321-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

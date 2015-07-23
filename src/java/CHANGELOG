@@ -1,0 +1,119 @@
+/*******************************************************************************
+ * The MIT License (MIT)
+ *  
+ * Copyright (c)2015 Neustar Inc.
+ *  
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *  
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *  
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *******************************************************************************/
+
+NeuStar EPP Reference Implementation (Java)
+
+$Id: CHANGELOG,v 1.2 2006/03/01 05:04:02 wtan Exp $
+================================================================================
+0.4.14 - 03/27/2015
+- Added support of allocation token epp extension
+- Added support of fee epp extesnion
+- Fixed bugs
+- Added new tests for new extsnsions.
+
+================================================================================
+0.4.1 - 10/31/2005
+
+- Added changes for EPP XRI Authority objects
+
+- Added support for EPP XRI I-Service objects
+
+================================================================================
+0.4.0 - 08/31/2005
+
+- Added XRI support
+
+- Fixed an issue with Xerces-J 2.x in class casting
+
+	./src/com/neulevel/epp/core/EppServiceMenu.java
+
+================================================================================
+0.3.2 - 02/26/2005
+
+- Added missing <msg> tag for message queue
+
+	./src/com/neulevel/epp/core/response/EppResponse.java
+
+================================================================================
+0.3.1 - 10/11/2004
+
+- Added DNSSEC (DS DATA only) support
+
+  Files updated:
+
+	./src/com/neulevel/epp/core/command/EppCommand.java
+	./src/com/neulevel/epp/core/response/EppResponse.java
+
+	./src/Makefile
+	./src/Makefile.incl
+	./src/com/neulevel/epp/Makefile
+	./test/Makefile
+
+	./STATUS
+	./CHANGELOG
+
+  Files added:
+
+	./src/com/neulevel/epp/ext/command/EppCommandCreateSecDns.java
+	./src/com/neulevel/epp/ext/command/EppCommandUpdateSecDns.java
+	./src/com/neulevel/epp/ext/EppSecDnsDsData.java
+	./src/com/neulevel/epp/ext/response/EppResponseInfoDataSecDns.java
+	./src/com/neulevel/epp/ext/EppExtension.java
+	./test/EppSecDnsTest.java
+
+	./src/com/neulevel/epp/ext/Makefile
+	./src/com/neulevel/epp/ext/command/Makefile
+	./src/com/neulevel/epp/ext/response/Makefile
+
+	./src/com/neulevel/epp/ext/package.html
+	./src/com/neulevel/epp/ext/command/package.html
+	./src/com/neulevel/epp/ext/response/package.html
+
+	./xsd/secDNS-1.0.xsd
+	./xsd/secDNS-1.0.xsd.orig
+	./xsd/xml/secDNS-1.0.xsd
+	./xsd/xml/domain-secdns-create.xml
+	./xsd/xml/domain-secdns-remove.xml
+	./xsd/xml/domain-secdns-update.xml
+	./xsd/xml/domain-secdns-infdat.xml
+
+- Bug fixes caused by typos in method EppContact.setContactDataInt() and
+  method EppCommandTransferSvcsub.setId(), courtesy to Kelly Riley
+  (kelly.riley@markmonitor.com):
+
+	./src/com/neulevel/epp/core/EppContact.java
+	./src/com/neulevel/epp/core/command/EppCommandTransferSvcsub.java
+
+================================================================================
+0.3.0 - 10/04/2004 (Patch)
+
+- Fixed EppMessageUtil.java for including extra 4 bytes for EPP payload length
+
+================================================================================
+
+0.3.0 - 07/08/2004
+
+- Initial baseline release for EPP-1.0 (EPP-09).
+
+================================================================================

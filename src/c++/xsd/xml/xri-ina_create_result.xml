@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <response>
+    <result code="1000">
+      <msg>Command completed successfully</msg>
+    </result>
+    <resData>
+      <xriINA:creData
+       xmlns:xriINA="urn:ietf:params:xml:ns:xriINA-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriINA-1.0
+       xriINA-1.0.xsd">
+        <xriINA:iname>@Foo.Bar</xriINA:iname>
+        <xriINA:crDate>2005-05-02T22:00:00.0Z</xriINA:crDate>
+        <xriINA:exDate>2007-05-02T22:00:00.0Z</xriINA:exDate>
+      </xriINA:creData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12345</clTRID>
+      <svTRID>54321-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

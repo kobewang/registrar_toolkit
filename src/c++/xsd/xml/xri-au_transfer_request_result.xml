@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <response>
+    <result code="1001">
+      <msg>Command completed successfully; action pending</msg>
+    </result>
+    <resData>
+      <xriAU:trnData
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:authId>FOO-BAR-ID</xriAU:authId>
+        <xriAU:target>FOO-BAR-INC</xriAU:target>
+        <xriAU:trToken>OneTimePass</xriAU:trToken>
+        <xriAU:trStatus>pending</xriAU:trStatus>
+        <xriAU:reID>ClientX</xriAU:reID>
+        <xriAU:reDate>2005-05-06T22:00:00.0Z</xriAU:reDate>
+        <xriAU:acID>ClientY</xriAU:acID>
+        <xriAU:acDate>2005-05-11T22:00:00.0Z</xriAU:acDate>
+      </xriAU:trnData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12345</clTRID>
+      <svTRID>54322-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

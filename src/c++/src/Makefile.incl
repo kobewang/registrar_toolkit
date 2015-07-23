@@ -1,0 +1,107 @@
+#******************************************************************************
+# The MIT License (MIT)
+#  
+# Copyright (c) 2015 Neustar Inc.
+#  
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#  
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#  
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#******************************************************************************
+#
+# $Id: Makefile.incl,v 1.14 2010/06/11 21:23:17 achowdhu Exp $
+#
+# This is the Makefile template for building EPP C++ Implementation
+#
+
+#
+# Products
+#
+PRODUCTNAME=epp
+PRODUCTVERSION=0_4_15
+PRODUCTVERSION_DOT=0.4.15
+TARGETDIR=${PRODUCTNAME}-c-${PLATFORM}-${CXX}-${PRODUCTVERSION_DOT}
+BINTARGETDIR=$(TOP)/${TARGETDIR}
+#
+# Directories
+#
+EPP_CXX_OPT = $(CXXFLAGS)
+#EPP_CXX_OPT = $(CXXFLAGS) -DRTK_SUPPORT_XRI
+EPP_LIB_DIR = $(TOP)/lib
+EPP_INC_DIR = $(TOP)/include
+EPP_OBJ_DIR = $(TOP)/obj/$(PLATFORM)
+EPP_OBJ     = $(TOP)/obj
+EPP_INC     = -I. -I$(EPP_INC_DIR) -I$(XERCES_INC_DIR) -I$(OPENSSL_INC_DIR)
+EPP_DEF     = -Dnull=0
+#
+# Common rules
+#
+.SUFFIXES:
+.SUFFIXES: .cpp .$(O)
+
+.cpp.$(O):
+	$(CC1) -c $(EPP_CXX_OPT) $(EPP_DEF) $(EPP_INC) $(EXTRA_OPT) -o $(@) $(<)
+	@if [ -f $(@) ]; then \
+		if [ "$(TOP)" != ".." ]; then \
+			echo $(CP) -p $(@) $(EPP_OBJ_DIR)/$(@) ; \
+			$(CP) -p $(@) $(EPP_OBJ_DIR)/$(@) ; \
+		fi; \
+	else \
+		exit 2 ; \
+	fi
+
+all:: compile dirs
+
+compile:: $(TARGETS)
+
+clean:: cleandirs
+	${RM} *.$(O) vc*.pdb
+
+dirs::
+	@if [ -n "$(DIRS)" ]; \
+	then for i in $(DIRS) __bogus__; do \
+			if [ $$i != __bogus__ ] ; then \
+				echo "$(MAKE) -C $$i"; $(MAKE) -C $$i || exit 1; \
+			fi \
+		done; \
+	fi
+
+include:: includedirs
+	@if [ -n "$(HDRS)" ]; \
+	then for i in $(HDRS) __bogus__; do \
+			if [ $$i != __bogus__ ] ; then \
+				echo "$(CP) $$i $(EPP_INC_DIR)"; $(CP) $$i $(EPP_INC_DIR) ; \
+			fi \
+		done; \
+	fi
+
+cleandirs::
+	@if [ -n "$(DIRS)" ]; \
+	then for i in $(DIRS) __bogus__; do \
+			if [ $$i != __bogus__ ] ; then \
+				echo "$(MAKE) -C $$i clean"; $(MAKE) -C $$i clean; \
+			fi \
+		done; \
+	fi
+
+includedirs::
+	@if [ -n "$(DIRS)" ]; \
+	then for i in $(DIRS) __bogus__; do \
+			if [ $$i != __bogus__ ] ; then \
+				echo "$(MAKE) -C $$i include"; $(MAKE) -C $$i include; \
+			fi \
+		done; \
+	fi

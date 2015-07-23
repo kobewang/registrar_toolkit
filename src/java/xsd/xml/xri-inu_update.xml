@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <command>
+    <update>
+      <xriINU:update
+       xmlns:xriINU="urn:ietf:params:xml:ns:xriINU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriINU-1.0
+       xriINU-1.0.xsd">
+        <xriINU:inumber>@!1002.2222.3333.4444</xriINU:inumber>
+        <xriINU:add>
+          <xriINU:status s="clientUpdateProhibited" lang="en">
+          </xriINU:status>
+        </xriINU:add>
+        <xriINU:rem>
+          <xriINU:status s="clientHold"/>
+          <xriINU:status s="clientRenewProhibited"/>
+        </xriINU:rem>
+        <xriINU:chg>
+          <xriINU:priority>15</xriINU:priority>
+        </xriINU:chg>
+      </xriINU:update>
+    </update>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

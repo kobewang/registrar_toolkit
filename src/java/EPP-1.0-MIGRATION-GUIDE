@@ -1,0 +1,145 @@
+/*******************************************************************************
+ * The MIT License (MIT)
+ *  
+ * Copyright (c)2015 Neustar Inc.
+ *  
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *  
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *  
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *******************************************************************************/
+
+Guide to EPP-1.0 Migration from EPP-04
+
+NeuStar's EPP Mapping for EPP-1.0 Java Toolkit is designed to
+maintain maximum backward compatibility with the old EPP-04 Toolkit
+(http://epp-ver-04.sf.net). Existing EPP client applications that
+use NeuLevel's EPP-04 Toolkit should compile without problem.
+However, due to changes made to the EPP protocol and associated XML
+schema files, the following changes are required to be made to an
+EPP client application:
+
+1. EPP Result Codes
+
+   An EPP client should expect EPP result code 1001 for a response
+   to an pending transfer transaction in EPP-1.0, instead of EPP
+   result code 1301 in EPP-04.
+
+   The meaning of EPP result code 2501 has been changed in EPP-1.0.
+   However, an EPP server may still use it for closing an idle EPP
+   session, in order to maintain backward compatibility with EPP-04.
+
+2. Response Message Identifers
+
+   An EPP client should use EppResponse.getMessageId() to retrieve
+   the identifier of an EPP response message polled from registry
+   message queue, instead of EppResultMessage.getId() in EPP-04.
+
+3. Responses to EPP Create Commands
+
+   An EPP client may extract the object creation date/time from the
+   EppResponseDataCreate object in the successful response of an
+   EPP create command. In EPP-04, the object creation date is not
+   retuned.
+
+4. Responses to EPP Renew Commands
+
+   The response data for a sucessful EPP renew command is defined
+   as an EppResposeDataRenew object in EPP-1.0, instead of an
+   EppResposeDataCreate object in EPP-04.
+
+5. Enhancement to EPP Domain Query Command
+
+   In EPP-1.0, an EPP client can specify an optional attribute for
+   controlling the return of child host objects associated with a
+   domain object. Please see EppCommandInfoDomain for details.
+
+6. Changes to Contact Information
+
+   In EPP-1.0, the street information associated with a postal
+   address for a contact object becomes optional. To maintain
+   backward compatibility with EPP-04, NeuLevel's EPP server requires
+   at least one street line to be supplied for a contact object.
+
+   A contact object can be associated with an EppContactDisclose
+   object for controlling the generation of WHOIS data, although the
+   actual action taken depends on the registry policy.
+
+   Also, in EPP-1.0, the maximum length values of various fields
+   related to a contact object have been extended. The following
+   table summarizes the changes made since EPP-04:
+
+   --------------+----------+-----------------------+---------
+                 |          |        EPP-04         | 
+   Contact Field | XML Tag  | Original | NeuLevel's | EPP-1.0
+		 |          | Length   | Extension  |
+   --------------+----------+----------+------------+---------
+   Name          | <name>   |    32    |     64     |   255
+   Org           | <org>    |    32    |     64     |   255
+   Street        | <street> |    32    |     64     |   255
+   City          | <city>   |    32    |     64     |   255
+   State/Province| <sp>     |    32    |     64     |   255
+   PostalCode	 | <pc>     |    10    |     10     |    16
+   Phone Number  | <voice>  |    15    |     17     |    17
+   Fax Number    | <fax>    |    15    |     17     |    17
+   --------------+----------+----------+------------+---------
+
+7. Support of "Host-As-Attribute" Registry Model
+
+   NeuLevel does not support the "host-as-attribute" registry model,
+   although the toolkit contains the "host-as-attribute" registry
+   interfaces.
+
+8. NeuLevel's Extensions
+
+   The API related to the EppUnspec object remains unchanged for
+   supporting NeuLevel's extensions. However, an XML schema file,
+   neulevel-1.0.xsd, is needed in support of the extensions in EPP-1.0.
+
+   Here is an example of the <extention> tag used for NeuLevel's
+   extensions in EPP-1.0:
+
+   <extension>
+     <neulevel:extension
+        xmlns="urn:ietf:params:xml:ns:neulevel-1.0"
+        xmlns:neulevel="urn:ietf:params:xml:ns:neulevel-1.0"
+        xsi:schemaLocation="urn:ietf:params:xml:ns:neulevel-1.0
+                            neulevel-1.0.xsd">
+       <neulevel:unspec>AppPurpose=P1 NexusCategory=C11</neulevel:unspec>
+     </neulevel:extension>
+   </extension>
+
+9. Java API vs C++ API
+
+   The Java toolkit and C++ toolkit provide equivalent interface
+   to all supported EPP objects and extensions. Every Java object
+   and API function/method has its C++ equivalent counterpart,
+   and vice versa; except for the EppResult::getValue() method of
+   the C++ API, which will return a vector of EppValueResult objects,
+   instead of a vector of String and/or EppValueResult objects as in
+   the Java API; A String object in C++ returned by the
+   EppResult::getValue() method is encapsulated in an EppValueResult
+   object without a reason text and the language attribute.
+
+For detailed summaries of API changes since EPP-04, please refer the
+summary sections of the following packages of the EPP-1.0 Java toolkit:
+
+	com.neulevel.epp.core
+	com.neulevel.epp.core.command
+	com.neulevel.epp.core.response
+	com.neulevel.epp.transport
+
+-EOF- $Id: EPP-1.0-MIGRATION-GUIDE,v 1.2 2006/03/01 05:04:02 wtan Exp $

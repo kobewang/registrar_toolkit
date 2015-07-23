@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+  <response>
+    <result code="1000">
+      <msg>Command completed successfully</msg>
+    </result>
+    <resData>
+      <xriAU:infData
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:authId>FOO-BAR-ID</xriAU:authId>
+        <xriAU:escrowAgent>
+          <xriAU:authId>@</xriAU:authId>
+        </xriAU:escrowAgent>
+        <xriAU:contactAgent>
+          <xriAU:authId>@!(!!1234!5678)</xriAU:authId>
+        </xriAU:contactAgent>
+        <xriAU:roid>AU_1002-NEUSTAR</xriAU:roid>
+        <xriAU:status s="clientDeleteProhibited"/>
+        <xriAU:status s="clientUpdateProhibited"/>
+        <xriAU:clID>ClientY</xriAU:clID>
+        <xriAU:crID>ClientX</xriAU:crID>
+        <xriAU:crDate>2005-05-03T22:00:00.0Z</xriAU:crDate>
+        <xriAU:upID>ClientX</xriAU:upID>
+        <xriAU:upDate>2005-05-05T09:00:00.0Z</xriAU:upDate>
+        <xriAU:trDate>2005-05-04T09:00:00.0Z</xriAU:trDate>
+      </xriAU:infData>
+    </resData>
+    <trID>
+      <clTRID>ABC-12346</clTRID>
+      <svTRID>54321-XYZ</svTRID>
+    </trID>
+  </response>
+</epp>

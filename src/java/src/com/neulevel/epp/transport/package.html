@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>com.neulevel.epp.transport package</title>
+<!--
+   - The MIT License (MIT)
+   -  
+   - Copyright (c)2015 Neustar Inc.
+   -  
+   - Permission is hereby granted, free of charge, to any person obtaining a copy
+   - of this software and associated documentation files (the "Software"), to deal
+   - in the Software without restriction, including without limitation the rights
+   - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   - copies of the Software, and to permit persons to whom the Software is
+   - furnished to do so, subject to the following conditions:
+   -  
+   - The above copyright notice and this permission notice shall be included in
+   - all copies or substantial portions of the Software.
+   -  
+   - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+   - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+   - THE SOFTWARE.
+-->
+</head>
+<body bgcolor="white">
+This package defines and implements various transport mechanisms for the EPP
+Protocol. Currently, it includes the support for
+<!--BEEP transport with TLS Profile and -->
+TCP transport with TLS.
+
+<P>
+
+<TABLE BORDER="1" VALIGN="TOP" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TD COLSPAN=2><FONT SIZE="+2">
+<B>Summary of API Changes Since EPP-04</B></FONT></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/transport/EppChannel.html" title="class in com.neulevel.epp.transport">EppChannel</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/transport/EppMessageUtil.html" title="class in com.neulevel.epp.transport">EppMessageUtil</A></B></TD>
+<TD>
+The com.neulevel.epp.transport.EppMessageUtil.eppMessageSize property and associated
+access methods have been added for supporting EPP-04 TCP transport mapping:
+<UL>
+<LI><A HREF="../../../../com/neulevel/epp/transport/EppMessageUtil.html#eppMessageSize">eppMessageSize</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/transport/EppMessageUtil.html#getEppMessageSizeFetchFlag()">getEppMessageSizeFetchFlag()</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/transport/EppMessageUtil.html#getEppMessageSizeWriteFlag()">getEppMessageSizeWriteFlag()</A></LI>
+<LI><A HREF="../../../../com/neulevel/epp/transport/EppMessageUtil.html#setEppMessageSizeFlags(boolean, boolean)">setEppMessageSizeFlags()</A></LI>
+</UL>
+The following utility methods have been added:
+<UL><LI><A HREF="../../../../com/neulevel/epp/transport/EppMessageUtil.html#putEppPayload(java.io.OutputStream, java.lang.String)">putEppPayload()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../com/neulevel/epp/transport/EppSession.html" title="class in com.neulevel.epp.transport">EppSession</A></B></TD>
+<TD>
+No change.</TD>
+</TR>
+</TABLE>
+
+</body>
+</html>

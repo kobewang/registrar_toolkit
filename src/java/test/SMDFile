@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><smd:signedMark xmlns:smd="urn:ietf:params:xml:ns:signedMark-1.0" id="signedMark">
+	<smd:id>1-2</smd:id>
+	<smd:issuerInfo issuerID="2">
+		<smd:org>issuerInfo Example Inc.</smd:org>
+		<smd:email>issuerInfo.support@example.tld</smd:email>
+		<smd:url>http://www.issuerInfoExample.tld</smd:url>
+		<smd:voice x="1234">+11.7035555555</smd:voice>
+	</smd:issuerInfo>
+	<smd:notBefore>2013-04-09T06:00:00.0Z</smd:notBefore>
+	<smd:notAfter>2013-06-30T06:00:00.0Z</smd:notAfter>
+	<mark:mark xmlns:mark="urn:ietf:params:xml:ns:mark-1.0">
+		<mark:trademark>
+			<mark:id>1234-2</mark:id>
+			<mark:markName>Example One</mark:markName>
+			<mark:holder entitlement="owner">
+				<mark:org>Example Inc.</mark:org>
+				<mark:addr>
+					<mark:street>123 Example Dr.</mark:street>
+					<mark:street>Suite 100</mark:street>
+					<mark:city>Reston</mark:city>
+					<mark:sp>VA</mark:sp>
+					<mark:pc>20190</mark:pc>
+					<mark:cc>US</mark:cc>
+				</mark:addr>
+			</mark:holder>
+			<mark:jurisdiction>US</mark:jurisdiction>
+			<mark:class>35</mark:class>
+			<mark:class>36</mark:class>
+			<mark:label>aff0101a</mark:label>
+			<mark:label>aff0101b</mark:label>
+			<mark:label>aff0101c</mark:label>
+			<mark:label>aff0101d</mark:label>
+			<mark:label>aff0101e</mark:label>
+			<mark:label>aff0101f</mark:label>
+			<mark:label>aff0201a</mark:label>
+			<mark:label>aff0201b</mark:label>
+			<mark:label>aff0201c</mark:label>
+			<mark:label>aff0201d</mark:label>
+			<mark:label>aff0201e</mark:label>
+			<mark:label>aff0201f</mark:label>
+			<mark:label>aff0301a</mark:label>
+			<mark:label>aff0301b</mark:label>
+			<mark:label>aff0301c</mark:label>
+			<mark:label>aff0301d</mark:label>
+			<mark:label>aff0301e</mark:label>
+			<mark:label>aff0301f</mark:label>
+			<mark:label>aff0401a</mark:label>
+			<mark:label>aff0401b</mark:label>
+			<mark:label>aff0401c</mark:label>
+			<mark:label>aff0401d</mark:label>
+			<mark:label>aff0401e</mark:label>
+			<mark:label>aff0401f</mark:label>
+			<mark:label>aff0501a</mark:label>
+			<mark:label>aff0501b</mark:label>
+			<mark:label>aff0501c</mark:label>
+			<mark:label>aff0501d</mark:label>
+			<mark:label>aff0501e</mark:label>
+			<mark:label>aff0501f</mark:label>
+			<mark:label>aff0601a</mark:label>
+			<mark:label>aff0601b</mark:label>
+			<mark:label>aff0601c</mark:label>
+			<mark:label>aff0601d</mark:label>
+			<mark:label>aff0601e</mark:label>
+			<mark:label>aff0601f</mark:label>
+			<mark:label>aff0701a</mark:label>
+			<mark:label>aff0701b</mark:label>
+			<mark:label>aff0701c</mark:label>
+			<mark:label>aff0701d</mark:label>
+			<mark:label>aff0701e</mark:label>
+			<mark:label>aff0701f</mark:label>
+			<mark:label>aff0801a</mark:label>
+			<mark:label>aff0801b</mark:label>
+			<mark:label>aff0801c</mark:label>
+			<mark:label>aff0801d</mark:label>
+			<mark:label>aff0801e</mark:label>
+			<mark:label>aff0801f</mark:label>
+			<mark:goodsAndServices>Dirigendas et eiusmodi featuring infringo in airfare et cartam servicia.</mark:goodsAndServices>
+			<mark:regNum>234235</mark:regNum>
+			<mark:regDate>2009-08-16T09:00:00.0Z</mark:regDate>
+			<mark:exDate>2015-08-16T09:00:00.0Z</mark:exDate>
+		</mark:trademark>
+	</mark:mark>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><Reference URI="#signedMark"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>ELteoICWyjifat6Fgbb5OcZqwoALL+x0QpdOsJuPd9Q=</DigestValue></Reference></SignedInfo><SignatureValue>hrLSAoO6MzjHCUkfcznf+O1dj+UsSqvTR9bXs51JRB+do8SDw/oRh31WY4pzqKO0fbl4bckeOIUS
+YWYFKH5XnPeiJDWxSdNo4xgSJr4FpM2UDyJzg/A5L4N5+UccwDuckNOE7KAex6MA4b+SiOgU1PtH
+fEVyqD/BA4XrvIPWHNM=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>jS+f+lrtAX4SwTnMqD/XZZWbxruAyFMYCBY2m0ODKtm6rBq6cbJ/HmO3b1olPKLbmtQ1yX/ykvNP
+hIW0923a68pNpvV4fqohhBys+VQ5Rcr6L0wxhE34kNv1nGFLAWkC3Q8fYNGYtNbn994DoUC7tcAG
+uF6nwBJNyln8xaCd0ms=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICXjCCAcegAwIBAgIISqMGd4LByj8wDQYJKoZIhvcNAQELBQAwQjEUMBIGA1UEAwwLVE1DSCBT
+VUIgQ0ExDjAMBgNVBAsMBVNVQkNBMQ0wCwYDVQQKDARUTUNIMQswCQYDVQQGEwJVUzAeFw0xMzA1
+MTQxODQ5MjVaFw0xNDA1MTQxODQ5MjVaMD8xETAPBgNVBAMMCHRtY2hnb29kMQ4wDAYDVQQLDAVT
+VUJDQTENMAsGA1UECgwEdG1jaDELMAkGA1UEBhMCVVMwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJ
+AoGBAI0vn/pa7QF+EsE5zKg/12WVm8a7gMhTGAgWNptDgyrZuqwaunGyfx5jt29aJTyi25rUNcl/
+8pLzT4SFtPdt2uvKTab1eH6qIYQcrPlUOUXK+i9MMYRN+JDb9ZxhSwFpAt0PH2DRmLTW5/feA6FA
+u7XABrhep8ASTcpZ/MWgndJrAgMBAAGjYDBeMB0GA1UdDgQWBBT7Q9jd1sb3XzoS5AS/e5/iZDeb
+0zAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFDucVDkhkgX9ogTqt7Gk/XFMr7NQMA4GA1UdDwEB
+/wQEAwIFoDANBgkqhkiG9w0BAQsFAAOBgQBYcch5t5TC/tSUGiSjj+puzLHgUXblYa47as7Bu0WB
+RnBmquwQWm8loNamXje0La+NSGGQhdZHPe0s6n+5hJ7dF3bSPXF89AXaCMP0QwX4n1u/vF7tiRXi
+o4nkAcVj+i6vNO6JZ0lBpylxiRwgVXhQ8mWGRibsihZlez/bPZ4r+w==</X509Certificate></X509Data></KeyInfo></Signature></smd:signedMark>

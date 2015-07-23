@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="urn:ietf:params:xml:ns:xriINA-1.0"
+        xmlns:xriINA="urn:ietf:params:xml:ns:xriINA-1.0"
+        xmlns:xriCommon="urn:ietf:params:xml:ns:xriCommon-1.0"
+        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+<!--
+Import common element types.
+-->
+  <import namespace="urn:ietf:params:xml:ns:epp-1.0"
+          schemaLocation="epp-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+          schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:xriCommon-1.0"
+          schemaLocation="xriCommon-1.0.xsd"/>
+
+  <annotation>
+    <documentation>
+      Extensible Provisioning Protocol v1.0
+      XML schema for XRI I-Name provisioning.
+    </documentation>
+  </annotation>
+
+<!--
+Child elements found in EPP commands.
+-->
+  <element name="check"    type="xriINA:mIdType"/>
+  <element name="create"   type="xriINA:createType"/>
+  <element name="delete"   type="xriINA:sIdType"/>
+  <element name="info"     type="xriINA:infoType"/>
+  <element name="renew"    type="xriINA:renewType"/>
+  <element name="transfer" type="xriINA:transferType"/>
+  <element name="update"   type="xriINA:updateType"/>
+
+<!--
+Child element of commands that require a single i-name
+-->
+  <complexType name="sIdType">
+    <sequence>
+      <element name="iname"  type="xriCommon:inameType"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child element of commands that accept multiple i-names
+-->
+  <complexType name="mIdType">
+    <sequence>
+      <element name="iname" type="xriCommon:inameType"
+       maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <create> command.
+-->
+  <complexType name="createType">
+    <sequence>
+      <element name="iname"     type="xriCommon:inameType"/>
+      <element name="authority" type="xriINA:authorityType"/>
+      <element name="period"    type="xriINA:periodType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="authorityType">
+    <sequence>
+      <element name="authId"   type="xriCommon:authIdType"/>
+      <element name="authInfo" type="xriINA:authInfoType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <info> command.
+-->
+  <complexType name="infoType">
+    <sequence>
+      <element name="iname"  type="xriCommon:inameType"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <renew> command.
+-->
+  <complexType name="renewType">
+    <sequence>
+      <element name="iname"      type="xriCommon:inameType"/>
+      <element name="curExpDate" type="date"/>
+      <element name="period"     type="xriINA:periodType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <transfer> command.
+-->
+  <complexType name="transferType">
+    <sequence>
+      <element name="iname"    type="xriCommon:inameType"/>
+      <element name="target"   type="xriINA:authorityType"
+       minOccurs="0"/>
+      <element name="period"   type="xriINA:periodType"
+       minOccurs="0"/>
+      <element name="trToken"  type="xriCommon:trTokenType"
+       minOccurs="0"/>
+      <element name="authInfo" type="xriINA:authInfoType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child elements of the <update> command.
+-->
+  <complexType name="updateType">
+    <sequence>
+      <element name="iname" type="xriCommon:inameType"/>
+      <element name="add"   type="xriINA:addRemType" minOccurs="0"/>
+      <element name="rem"   type="xriINA:addRemType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Data elements that can be added or removed.
+-->
+  <complexType name="addRemType">
+    <sequence>
+      <element name="status" type="xriINA:statusType" maxOccurs="12"/>
+    </sequence>
+  </complexType>
+
+<!--
+Child response elements.
+-->
+  <element name="chkData" type="xriINA:chkDataType"/>
+  <element name="creData" type="xriINA:creDataType"/>
+  <element name="infData" type="xriINA:infDataType"/>
+  <element name="panData" type="xriINA:panDataType"/>
+  <element name="renData" type="xriINA:renDataType"/>
+  <element name="trnData" type="xriINA:trnDataType"/>
+
+<!--
+<check> response elements.
+-->
+  <complexType name="chkDataType">
+    <sequence>
+      <element name="cd" type="xriINA:checkType"
+       maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="checkType">
+    <sequence>
+      <element name="iname" type="xriINA:checkIdType"/>
+      <element name="reason"  type="eppcom:reasonType"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="checkIdType">
+    <simpleContent>
+      <extension base="xriCommon:inameType">
+        <attribute name="avail" type="boolean"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+<!--
+<create> response elements.
+-->
+  <complexType name="creDataType">
+    <sequence>
+      <element name="iname" type="xriCommon:inameType"/>
+      <element name="crDate"  type="dateTime"/>
+      <element name="exDate"  type="dateTime"/>
+    </sequence>
+  </complexType>
+
+<!--
+<info> response elements.
+-->
+  <complexType name="infDataType">
+    <sequence>
+      <element name="iname"    type="xriCommon:inameType"/>
+      <element name="roid"     type="eppcom:roidType"/>
+      <element name="status"   type="xriINA:statusType" maxOccurs="12"/>
+      <element name="authId"   type="xriCommon:authIdType"/>
+      <element name="clID"     type="eppcom:clIDType"/>
+      <element name="crID"     type="eppcom:clIDType"/>
+      <element name="crDate"   type="dateTime"/>
+      <element name="upID"     type="eppcom:clIDType" minOccurs="0"/>
+      <element name="upDate"   type="dateTime" minOccurs="0"/>
+      <element name="exDate"   type="dateTime"/>
+      <element name="trDate"   type="dateTime" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+<renew> response elements.
+-->
+  <complexType name="renDataType">
+    <sequence>
+      <element name="iname"   type="xriCommon:inameType"/>
+      <element name="exDate" type="dateTime"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+<transfer> response elements.
+-->
+  <complexType name="trnDataType">
+    <sequence>
+      <element name="iname"    type="xriCommon:inameType"/>
+      <element name="source"   type="xriCommon:authIdType"/>
+      <element name="target"   type="xriCommon:authIdType"/>
+      <element name="trToken"  type="xriCommon:trTokenType"
+       minOccurs="0"/>
+      <element name="trStatus" type="xriCommon:trStatusType"/>
+      <element name="reID"     type="eppcom:clIDType"/>
+      <element name="reDate"   type="dateTime"/>
+      <element name="acID"     type="eppcom:clIDType"/>
+      <element name="acDate"   type="dateTime"/>
+      <element name="exDate"   type="dateTime"
+       minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+<!--
+Status is a combination of attributes and an optional
+human-readable message that may be expressed in languages other
+than English.
+-->
+  <complexType name="statusType">
+    <simpleContent>
+      <extension base="normalizedString">
+        <attribute name="s" type="xriINA:statusValueType"
+         use="required"/>
+        <attribute name="lang" type="language"
+         default="en"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <simpleType name="statusValueType">
+    <restriction base="token">
+      <enumeration value="clientDeleteProhibited"/>
+      <enumeration value="clientHold"/>
+      <enumeration value="clientRenewProhibited"/>
+      <enumeration value="clientTransferProhibited"/>
+      <enumeration value="clientUpdateProhibited"/>
+      <enumeration value="ok"/>
+      <enumeration value="pendingCreate"/>
+      <enumeration value="pendingDelete"/>
+      <enumeration value="pendingUpdate"/>
+      <enumeration value="pendingTransfer"/>
+      <enumeration value="serverDeleteProhibited"/>
+      <enumeration value="serverHold"/>
+      <enumeration value="serverRenewProhibited"/>
+      <enumeration value="serverTransferProhibited"/>
+      <enumeration value="serverUpdateProhibited"/>
+    </restriction>
+  </simpleType>
+
+<!--
+Pending action notification response elements.
+-->
+  <complexType name="panDataType">
+    <sequence>
+      <element name="iname" type="xriINA:paIdType"/>
+      <element name="paTRID"  type="epp:trIDType"/>
+      <element name="paDate"  type="dateTime"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="paIdType">
+    <simpleContent>
+      <extension base="xriCommon:inameType">
+        <attribute name="paResult" type="boolean"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+<!--
+Auth Info type.
+-->
+  <complexType name="authInfoType">
+    <choice>
+      <element name="pw"  type="eppcom:pwAuthInfoType"/>
+      <element name="ext" type="eppcom:extAuthInfoType"/>
+    </choice>
+  </complexType>
+
+<!--
+Period type.
+-->
+  <complexType name="periodType">
+    <simpleContent>
+      <extension base="xriCommon:pLimitType">
+        <attribute name="unit" type="xriCommon:pUnitType"
+         use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+<!--
+End of schema.
+-->
+</schema>

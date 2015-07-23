@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0
+     epp-1.0.xsd">
+  <command>
+    <update>
+      <xriAU:update
+       xmlns:xriAU="urn:ietf:params:xml:ns:xriAU-1.0"
+       xsi:schemaLocation="urn:ietf:params:xml:ns:xriAU-1.0
+       xriAU-1.0.xsd">
+        <xriAU:authId>FOO-BAR-ID</xriAU:authId>
+        <xriAU:add>
+          <xriAU:socialData>
+            <xriAU:postalInfo>
+              <xriAU:name>Foo Bar, Corp.</xriAU:name>
+              <xriAU:addr>
+                <xriAU:street>234 Example Dr.</xriAU:street>
+                <xriAU:street>Suite 200</xriAU:street>
+                <xriAU:city>Dulles</xriAU:city>
+                <xriAU:sp>VA</xriAU:sp>
+                <xriAU:pc>20166-6503</xriAU:pc>
+                <xriAU:cc>US</xriAU:cc>
+              </xriAU:addr>
+            </xriAU:postalInfo>
+            <xriAU:voice x="1236">+1.7035555557</xriAU:voice>
+            <xriAU:voice x="1236">+1.7035555558</xriAU:voice>
+            <xriAU:fax>+1.7035555558</xriAU:fax>
+            <xriAU:email>jdoe@example.biz</xriAU:email>
+          </xriAU:socialData>
+        </xriAU:add>
+        <xriAU:authInfo>
+          <xriAU:pw>2fooBAR</xriAU:pw>
+        </xriAU:authInfo>
+      </xriAU:update>
+    </update>
+    <clTRID>ABC-12345</clTRID>
+  </command>
+</epp>

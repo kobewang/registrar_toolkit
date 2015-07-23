@@ -1,0 +1,274 @@
+!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>com.neulevel.epp.core.response package</title>
+<!--
+   - The MIT License (MIT)
+   -  
+   - Copyright (c)2015 Neustar Inc.
+   -  
+   - Permission is hereby granted, free of charge, to any person obtaining a copy
+   - of this software and associated documentation files (the "Software"), to deal
+   - in the Software without restriction, including without limitation the rights
+   - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   - copies of the Software, and to permit persons to whom the Software is
+   - furnished to do so, subject to the following conditions:
+   -  
+   - The above copyright notice and this permission notice shall be included in
+   - all copies or substantial portions of the Software.
+   -  
+   - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+   - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+   - THE SOFTWARE.
+-->
+</head>
+<body bgcolor="white">
+This package implements various responses and related components for the
+EPP Protocol. These responses are used for the registry server to notify
+a registrar client about the results of operations performed by the
+client on various objects in the registry server.
+
+<P>
+
+<TABLE BORDER="1" VALIGN="TOP" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TD COLSPAN=2><FONT SIZE="+2">
+<B>Summary of API Changes Since EPP-04</B></FONT></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponse.html" title="class in com.neulevel.epp.core.response">EppResponse</A></B></TD>
+<TD>
+Access methods for getting/setting the identifier of a message retrieved via an EPP poll command, for replacing the methods
+defined in class <A HREF="../../../../../com/neulevel/epp/core/response/EppResultMessage.html">EppResultMessage</A> for EPP-04.
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponse.html#getMessageId()">getMessageId()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponse.html#setMessageId(java.lang.String)">setMessageId()</A></LI>
+</UL>
+Access methods have been added for adding/getting EPP extensions:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponse.html#addExtension(org.w3c.dom.Element)">addExtension()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponse.html#getExtension()">getExtension()</A></LI>
+</UL>
+Currently, <code>EppUnspec</code> is the only fully supported EPP extension.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseData.html" title="class in com.neulevel.epp.core.response">EppResponseData</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheck.html" title="class in com.neulevel.epp.core.response">EppResponseDataCheck</A></B></TD>
+<TD>
+Access methods have been added for getting check result and reason information:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheck.html#getResultHashMap()">getResultHashMap()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheck.html#getReasonHashMap()">getRessonHashMap()</A></LI>
+</UL>
+Access methods have been added for adding check result and reason information:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheck.html#add(java.lang.String, boolean)">add()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheck.html#add(java.lang.String, boolean, java.lang.String)">add()</A></LI>
+</UL>
+Access methods have been added for checking the availability and the reason of an object for provisioning:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheck.html#isAvailable(java.lang.String)">isAvailable()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheck.html#getReason(java.lang.String)">getReason()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheckContact.html" title="class in com.neulevel.epp.core.response">EppResponseDataCheckContact</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheckDomain.html" title="class in com.neulevel.epp.core.response">EppResponseDataCheckDomain</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheckHost.html" title="class in com.neulevel.epp.core.response">EppResponseDataCheckHost</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheckSvcsub.html" title="class in com.neulevel.epp.core.response">EppResponseDataCheckSvcsub</A></B></TD>
+<TD>
+Access methods have been added for specifying an optional service identifier:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheckSvcsub.html#getService()">getService()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCheckSvcsub.html#setService(java.lang.String)">setService()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreate.html" title="class in com.neulevel.epp.core.response">EppResponseDataCreate</A></B></TD>
+<TD>
+Access methods have been added for setting/getting object creation timestamp:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreate.html#getDateCreated()">getDateCreated()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreate.html#setDateCreated(java.util.Calendar)">setDateCreated()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreateContact.html" title="class in com.neulevel.epp.core.response">EppResponseDataCreateContact</A></B></TD>
+<TD>
+No change, except adding a new contructor with an object creation timestamp.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreateDomain.html" title="class in com.neulevel.epp.core.response">EppResponseDataCreateDomain</A></B></TD>
+<TD>
+No change, except adding a new contructor with an object creation timestamp.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreateHost.html" title="class in com.neulevel.epp.core.response">EppResponseDataCreateHost</A></B></TD>
+<TD>
+No change, except adding a new contructor with an object creation timestamp.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreateSvcsub.html" title="class in com.neulevel.epp.core.response">EppResponseDataCreateSvcsub</A></B></TD>
+<TD>
+Access methods have been added for specifying an optional service identifier,
+in addition to a new contructor with an object creation timestamp:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreateSvcsub.html#getService()">getService()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreateSvcsub.html#setService(java.lang.String)">setService()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataInfo.html" title="class in com.neulevel.epp.core.response">EppResponseDataInfo</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataPending.html" title="class in com.neulevel.epp.core.response">EppResponseDataPending</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataPendingContact.html" title="class in com.neulevel.epp.core.response">EppResponseDataPendingContact</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataPendingDomain.html" title="class in com.neulevel.epp.core.response">EppResponseDataPendingDomain</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataPendingHost.html" title="class in com.neulevel.epp.core.response">EppResponseDataPendingHost</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataPendingSvcsub.html" title="class in com.neulevel.epp.core.response">EppResponseDataPendingSvcsub</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataPoll.html" title="class in com.neulevel.epp.core.response">EppResponseDataPoll</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataRenew.html" title="class in com.neulevel.epp.core.response">EppResponseDataRenew</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataRenewDomain.html" title="class in com.neulevel.epp.core.response">EppResponseDataRenewDomain</A></B></TD>
+<TD>
+New class, replacing
+<A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreateDomain.html">EppResponseDataCreateDomain</A>
+in EPP-04 in the response to a successful EPP Svcsub renew command.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataRenewSvcsub.html" title="class in com.neulevel.epp.core.response">EppResponseDataRenewSvcsub</A></B></TD>
+<TD>
+New class, replacing
+<A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataCreateSvcsub.html">EppResponseDataCreateSvcsub</A>
+in EPP-04 in the response to a successful EPP Svcsub renew command.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataTransfer.html" title="class in com.neulevel.epp.core.response">EppResponseDataTransfer</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataTransferContact.html" title="class in com.neulevel.epp.core.response">EppResponseDataTransferContact</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataTransferDomain.html" title="class in com.neulevel.epp.core.response">EppResponseDataTransferDomain</A></B></TD>
+<TD>
+No change.
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataTransferSvcsub.html" title="class in com.neulevel.epp.core.response">EppResponseDataTransferSvcsub</A></B></TD>
+<TD>
+Access methods have been added for specifying an optional service identifier:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataTransferSvcsub.html#getService()">getService()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResponseDataTransferSvcsub.html#setService(java.lang.String)">setService()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResult.html" title="class in com.neulevel.epp.core.response">EppResult</A></B></TD>
+<TD>
+Access methods for adding an
+<A HREF="../../../../../com/neulevel/epp/core/response/EppValueReason.html">EppValueReason</A>
+object have been added:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResult.html#addValue(com.neulevel.epp.core.response.EppValueReason)">addValue()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppResultMessage.html" title="class in com.neulevel.epp.core.response">EppResultMessage</A></B></TD>
+<TD>
+Access methods for getting/setting the identifer of a message are not functional, defined for backward compatibility, will be removed in the future:
+<UL>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResultMessage.html#getId()">getId()</A></LI>
+<LI><A HREF="../../../../../com/neulevel/epp/core/response/EppResultMessage.html#setId(java.lang.String)">setId()</A></LI>
+</UL>
+</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="TOP" WIDTH="15%"><B><A HREF="../../../../../com/neulevel/epp/core/response/EppValueReason.html" title="class in com.neulevel.epp.core.response">EppValueReason</A></B></TD>
+<TD>
+New class.
+</TD>
+</TR>
+</TABLE>
+
+</body>
+</html>

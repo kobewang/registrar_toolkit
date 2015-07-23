@@ -1,0 +1,16 @@
+ssl.client.authentication=true
+ssl.keymanager.algorithm=SunX509
+#ssl.keymanager.provider=SUN
+ssl.keystore.type=JKS
+ssl.keystore.provider=SUN
+ssl.keystore.format=file
+ssl.keystore.name=testkeys.server.keystore
+ssl.keystore.storepass=DotBizKeyStore
+ssl.keystore.keypass=DotBizKeyStore
+ssl.trustmanager.algorithm=SunX509
+#ssl.trustmanager.provider=SUN
+ssl.truststore.type=JKS
+ssl.truststore.provider=SUN
+ssl.truststore.format=file
+ssl.truststore.name=testkeys.server.trustore
+ssl.truststore.storepass=DotBizEppServer

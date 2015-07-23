@@ -1,0 +1,121 @@
+/*******************************************************************************
+ * The MIT License (MIT)
+ *
+ * Copyright (c)2015 Neustar Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *******************************************************************************/
+
+NeuStar EPP Reference Implementation (C++)
+
+$Id: CHANGELOG,v 1.2 2006/03/01 05:04:02 wtan Exp $
+================================================================================
+0.4.14 - 03/27/2015
+- Integration of xercesc 3.1.1. This brought many changes. 
+- Added support of allocation token epp extension
+- Added support of fee epp extesnion
+- Fixed bugs
+- Added new tests for new extsnsions.
+
+Note: Some interfaces which were returning ValueVectorOf are not return
+      OldValueVectorOf. 
+
+================================================================================
+0.4.1 - 10/31/2005
+
+- Added changes for EPP XRI Authority objects
+
+- Added support for EPP XRI I-Service objects
+
+- Added workaround of Year 2038 problem with time_t
+
+================================================================================
+0.4.0 - 08/31/2005
+
+- Added XRI support
+
+================================================================================
+0.3.2 - 02/25/2005
+
+- Added missing <msg> tag for message queue
+
+        ./src/epp/core/response/EppResponse.cpp
+        ./src/epp/core/response/EppResponse.hpp
+
+- Merge EPP payload length and payload data into a single packet for EPP
+  messages less than 4KB (optimization)
+
+	./src/epp/transport/EppMessageUtil.cpp
+
+================================================================================
+0.3.1 - 10/12/2004
+
+- Added DNSSEC (DS DATA only) support
+
+  Files updated:
+
+	./src/Makefile
+	./src/Makefile.incl
+	./src/epp/Makefile
+	./src/epp/core/command/EppCommand.cpp
+	./src/epp/core/EppEntity.cpp
+	./src/epp/core/EppEntity.hpp
+	./src/epp/core/response/EppResponse.cpp
+	./src/epp/Makefile
+	./src/doc/overview-frame.html
+	./test/Makefile
+	./STATUS
+	./CHANGELOG
+
+  Files added:
+
+	./src/epp/ext/command/Makefile
+	./src/epp/ext/command/EppCommandCreateSecDns.hpp
+	./src/epp/ext/command/EppCommandCreateSecDns.cpp
+	./src/epp/ext/command/EppCommandUpdateSecDns.hpp
+	./src/epp/ext/command/EppCommandUpdateSecDns.cpp
+	./src/epp/ext/Makefile
+	./src/epp/ext/EppExtension.hpp
+	./src/epp/ext/EppExtension.cpp
+	./src/epp/ext/response/Makefile
+	./src/epp/ext/response/EppResponseDataInfoSecDns.cpp
+	./src/epp/ext/response/EppResponseDataInfoSecDns.hpp
+	./src/epp/ext/EppSecDnsDsData.hpp
+	./src/epp/ext/EppSecDnsDsData.cpp
+	./test/EppTestSecDns.cpp
+
+        ./xsd/secDNS-1.0.xsd
+        ./xsd/secDNS-1.0.xsd.orig
+        ./xsd/xml/secDNS-1.0.xsd
+        ./xsd/xml/domain-secdns-create.xml
+        ./xsd/xml/domain-secdns-remove.xml
+        ./xsd/xml/domain-secdns-update.xml
+        ./xsd/xml/domain-secdns-infdat.xml
+
+================================================================================
+0.3.0 - 10/04/2004 (Patch)
+
+- Fixed EppMessageUtil.cpp for including extra 4 bytes for EPP payload length
+
+================================================================================
+0.3.0 - 07/28/2004
+
+- Initial baseline release for EPP-1.0 (EPP-09).
+
+================================================================================

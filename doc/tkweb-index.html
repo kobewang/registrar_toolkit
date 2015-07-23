@@ -1,0 +1,261 @@
+<HTML>
+<!--
+   - The MIT License (MIT)
+   -  
+   - Copyright (c)2015 Neustar Inc.
+   -  
+   - Permission is hereby granted, free of charge, to any person obtaining a copy
+   - of this software and associated documentation files (the "Software"), to deal
+   - in the Software without restriction, including without limitation the rights
+   - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   - copies of the Software, and to permit persons to whom the Software is
+   - furnished to do so, subject to the following conditions:
+   -  
+   - The above copyright notice and this permission notice shall be included in
+   - all copies or substantial portions of the Software.
+   -  
+   - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+   - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+   - THE SOFTWARE.
+-->
+
+<HEAD><TITLE>EPP XRI Mapping</TITLE></HEAD>
+<BODY>
+<H3>EPP XRI Mapping and <A HREF="docs/apiDocs">Java API</A></H3>
+For NeuStar's XRI Toolkit: 
+<UL>
+<LI>
+<A HREF="NeuStar-XRI.0.4.9.tar.gz">NeuStar-XRI.0.4.9.tar.gz</A>
+</LI>
+<LI>
+<A HREF="NeuStar-XRI.0.4.9.zip">NeuStar-XRI.0.4.9.zip</A>
+</LI>
+</UL>
+<!--I>Note: I-Service API has not been added</I-->
+<TABLE BORDER=1>
+<TR>
+<TD ALIGN=LEFT NOWRAP BGCOLOR=#E0E0E0><B>Object Type</TD>
+<TD ALIGN=LEFT NOWRAP BGCOLOR=#E0E0E0><B>XRI Authority</TD>
+<TD ALIGN=LEFT NOWRAP BGCOLOR=#E0E0E0><B>XRI I-Number</TD>
+<TD ALIGN=LEFT NOWRAP BGCOLOR=#E0E0E0><B>XRI I-Name</TD>
+</TR>
+<TR>
+<TD ALIGN=LEFT NOWRAP BGCOLOR=#E0E0E0><B>ZIP Package</TD>
+<TD><A HREF="epp-xri-au.zip">epp-xri-au.zip</A></TD>
+<TD><A HREF="epp-xri-inu.zip">epp-xri-inu.zip</A></TD>
+<TD><A HREF="epp-xri-ina.zip">epp-xri-ina.zip</A></TD>
+</TR>
+<TR>
+<TD ALIGN=LEFT NOWRAP BGCOLOR=#E0E0E0><B>Specification</TD>
+<TD><A HREF="epp-xri-au/epp-xri-au-04.pdf">epp-xri-au-04.pdf</A></TD>
+<TD><A HREF="epp-xri-inu/epp-xri-inu-04.pdf">epp-xri-inu-04.pdf</A></TD>
+<TD><A HREF="epp-xri-ina/epp-xri-ina-04.pdf">epp-xri-ina-04.pdf</A></TD>
+</TR>
+<TR>
+<TD ALIGN=LEFT NOWRAP BGCOLOR=#E0E0E0><B>XML Schema</TD>
+<TD><A HREF="epp-xri-au/xriAU-1.0.xsd">xriAU-1.0.xsd</A></TD>
+<TD><A HREF="epp-xri-inu/xriINU-1.0.xsd">xriINU-1.0.xsd</A></TD>
+<TD><A HREF="epp-xri-ina/xriINA-1.0.xsd">xriINA-1.0.xsd</A></TD>
+</TR>
+<TR>
+<TD ALIGN=LEFT NOWRAP BGCOLOR=#E0E0E0 VALIGN=TOP><B>XML Examples</TD>
+<TD VALIGN=TOP>
+<A HREF="epp-xri-au/xri-au_check.xml">check.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_check_result.xml">check_result.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_create.xml">create.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_create_no_social_data.xml">create_no_social_data.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_create_result.xml">create_result.xml</A>
+<BR>
+<BR><A HREF="epp-xri-au/xri-au_delete.xml">delete.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_delete_result.xml">delete_result.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_info.xml">info.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_info_result.xml">info_result.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_info_result_no_auth.xml">info_result_no_auth.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_info_network.xml">info_network.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_info_network_result.xml">info_network_result.xml</A>
+<BR>
+<BR>
+<BR><A HREF="epp-xri-au/xri-au_transfer_query.xml">transfer_query.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_transfer_query_result.xml">transfer_query_result.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_transfer_request.xml">transfer_request.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_transfer_request_result.xml">transfer_request_result.xml</A>
+<BR>
+<BR><A HREF="epp-xri-au/xri-au_update.xml">update.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_update_network.xml">update_network.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_update_add_social_data.xml">update_add_social_data.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_update_remove_social_data.xml">update_remove_social_data.xml</A>
+<BR><A HREF="epp-xri-au/xri-au_update_result.xml">update_result.xml</A>
+</TD>
+<TD VALIGN=TOP>
+<A HREF="epp-xri-inu/xri-inu_check.xml">check.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_check_result.xml">check_result.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_create.xml">create.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_create_result.xml">create_result.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_create_gen.xml">create_gen.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_create_gen_result.xml">create_gen_result.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_delete.xml">delete.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_delete_result.xml">delete_result.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_info.xml">info.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_info_result.xml">info_result.xml</A>
+<BR>
+<BR>
+<BR>
+<BR><A HREF="epp-xri-inu/xri-inu_renew.xml">renew.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_renew_result.xml">renew_result.xml</A>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR><A HREF="epp-xri-inu/xri-inu_update.xml">update.xml</A>
+<BR><A HREF="epp-xri-inu/xri-inu_update_result.xml">update_result.xml</A>
+</TD>
+<TD VALIGN=TOP>
+<A HREF="epp-xri-ina/xri-ina_check.xml">check.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_check_result.xml">check_result.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_create.xml">create.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_create_result.xml">create_result.xml</A>
+<BR>
+<BR>
+<BR><A HREF="epp-xri-ina/xri-ina_delete.xml">delete.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_delete_result.xml">delete_result.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_info.xml">info.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_info_result.xml">info_result.xml</A>
+<BR>
+<BR>
+<BR>
+<BR><A HREF="epp-xri-ina/xri-ina_renew.xml">renew.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_renew_result.xml">renew_result.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_transfer_query.xml">transfer_query.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_transfer_query_result.xml">transfer_query_result.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_transfer_request.xml">transfer_request.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_transfer_approve.xml">transfer_approve.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_transfer_request_result.xml">transfer_request_result.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_update.xml">update.xml</A>
+<BR><A HREF="epp-xri-ina/xri-ina_update_result.xml">update_result.xml</A>
+</TD>
+</TR>
+<TR>
+<TD ALIGN=LEFT NOWRAP BGCOLOR=#E0E0E0><B>Shared Schema</TD>
+<TD COLSPAN=4 BGCOLOR=#E0E0E0><A HREF="epp-xri-isv/xriCommon-1.0.xsd">xriCommon-1.0.xsd</A>&nbsp;
+<A HREF="epp-xri-au/epp-1.0.xsd">epp-1.0.xsd</A>&nbsp;
+<A HREF="epp-xri-au/eppcom-1.0.xsd">eppcom-1.0.xsd</A>&nbsp;
+<A HREF="epp-xri-au/contact-1.0.xsd">contact-1.0.xsd</A>&nbsp;<I>(used by XRI Authority only)</I>
+</TR>
+</TABLE>
+<PRE>
+<b>CHANGELOG:</b>
+
+
+2008-04-24	0.4.9 (version number stays unchanged)
+		o xriINU-1.0.xsd - made inumber priority optional in xriAU:info response (for legacy support)
+		o removed inumber priority in EppXriNumberAttribute and EppXriNumber
+
+2008-04-22	0.4.9 (version number stays unchanged)
+		o EppXriAuthority and EppCommandUpdateXriAuthority - changed type of CanonicalEquivID from EppXriSynonym to string
+		o EppCommandUpdateXriAuthority.java - fixed bug in toXML where removed equivIDs and redirects are not serialized
+		o SEP, Ref and URI - made priority optional
+
+2008-03-28	0.4.9
+		o added Redirect, EquivID, CanonicalEquivID, and extension to EppXriAuthority
+		o added Ref, Redirect, LocalID, and extension to EppXriServiceEndpoint
+		o added EppXriSynonym class to represent EquivID and CanonicalEquivID
+		o added redirect, equivID, canonicalEquivID and extension support in EppCommandUpdateXriAuthority
+		o deprecated priority in iNumber
+		o C++ API changes:
+			- added EppUtil::getDate(const char *, bool)
+			- uses NBIO internally for SSL connections
+			- clear SSL error queue before calling SSL_read or SSL_write
+
+		o Java API changes:
+			- updated EppSessionTcp to save parser error as a RuntimeException
+			- modified EppParser to return plain text error messages as String.
+			- added ability for EppParser to find XSD files for validation other than the current working directory
+
+		o XSD changes
+			- removed priority from xriINU-1.0.xsd
+			- new elements in xriAU-1.0.xsd
+			- removed "content" and "none" values in match attribute in xriAU-1.0.xsd
+
+
+2007-08-01	0.4.6
+		o Updated xriAU-1.0.xsd, xriINA-1.0.xsd and xriCommon-1.0.xsd to add "serverRejected" as a possible value for trStatus.
+		  This transfer status value was not originally defined in EPP.
+		o Made exDate optional in renew response for iname, inumber and iservice
+		o Fixed typo in EppCommandRenewXriNumber and EppCommandRenewXriName so that namespace qualified tag (xriINA:iname) works
+		o Fixed EppCommandTransferXriName.cpp bug where transfer command is not serialized in the correct format (only affected XrpClientTool)
+		o Fixed missing trnData in Authority Transfer response
+		o Java class files were compiled with JDK 1.5 and may not work with older versions. If it doesn't work for you, please rebuild usig your JDK.
+
+
+2006-09-06	(no version number change)
+		o XSD changes
+			- made exDate optional in xriINA, xriINU, and xriISV transfer response
+
+2006-09-06	0.4.5
+		o XSD changes
+			- made authId optional in the xriAU transfer response
+		o Java API changes
+			- fixed potential race condition due to unsynchronized usage of static SimpleDateFormat instance in EppUtil.java
+			- [EppTestServerTcp.java] return creation date in addition to expiry date in create:xriISV response
+		o C++ API changes
+			- no defaulting of select attribute in EppXriServiceEndpointRule,
+			  EppXriServiceEndpointMediaType, EppXriServiceEndpointPath and EppXriServiceEndpointType
+			- no defaulting of append attribute in EppXriURI
+			- fixed typo in id attribute comparison in EppCommandRenewXriService.cpp
+			- fixed typo with newContactAgent in EppCommandUpdateXriAuthority.hpp
+
+2006-05-22	0.4.4-bis
+		o relaxed socialData rules in xriAU-1.0.xsd
+
+
+2006-04-11	0.4.4
+		o Allow empty Type/Path/MediaType in XSD
+		o Added "authority" as a possible "append" attribute value in XSD
+		o Updated XML examples to have the correct escrow and contact agent authority ID format
+		o Fixed match and select attributes not saved while reading from XML stream in EppServiceEndpoint.java
+		o minor non-critical fixes
+
+2006-03-26	03
+		o Support for XRI-Resolution-V2.0-wd10
+		o Added escrow and contact agent fields to authority
+		o Added "match" and "select" attributes to SEP Type, Path, and MediaType
+		o Added "append" attribute to SEP URI
+
+2006-03-03	03-pre
+		o Support for XRI-Resolution-V2.0-wd10-ed04
+		o Renamed classes with double 'I' in names (e.g. EppXriIName =&gt; EppXriName)
+		o add optional service "path" child elements to Service Endpoint
+		o renamed xriAU:xs element to xriAU:ref
+
+2005-10-18	02-bis
+
+		o add optional service "authority" tag to Service Endpoint
+		o make service "type" 0-to-many for Service Endpoint
+ 
+2005-10-06	01-to-02
+
+epp-xri-au
+		o make social data optional and removable
+		o make email addresses optional
+		o make voice telephone numbers optional
+		o make service type 1-to-many
+		o remove authority endpoints
+		o remove sep/aep flags for external synonyms
+		o add EPP I-Service
+
+epp-xri-inu
+		o allow &lt;inumber&gt; and &lt;refId&gt; co-exist for &lt;create&gt;
+
+epp-xri-ina
+		o typo fixes and reference changes
+
+epp-xri-isv
+		o add system generated URL elements for &lt;creData&gt; and &lt;infData&gt;
+</PRE>
+</BODY>
+</HTML>

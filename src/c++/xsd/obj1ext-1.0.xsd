@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="http://custom/obj1ext-1.0"
+        xmlns:obj1ext="http://custom/obj1ext-1.0"
+        xmlns:epp="urn:iana:xml:ns:epp-1.0"
+        xmlns:eppcom="urn:iana:xml:ns:eppcom-1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+<!--
+Import common element types.
+-->
+  <import namespace="urn:iana:xml:ns:eppcom-1.0"
+          schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:iana:xml:ns:epp-1.0"
+          schemaLocation="epp-1.0.xsd"/>
+
+  <annotation>
+    <documentation>
+      Extensible Provisioning Protocol v1.0
+      example unspecified extension provisioning schema.
+    </documentation>
+  </annotation>
+
+<!--
+Types used within an EPP greeting.
+-->
+  <element name="svc"/>
+
+<!--
+Define custom elements and types here.
+-->
+
+<!--
+End of schema.
+-->
+</schema>
